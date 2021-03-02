@@ -13,9 +13,9 @@ const cacheImages = (images) =>
       ? Image.prefetch(image)
       : Asset.fromModule(image).downloadAsync()
   );
-const cacheIcons = (fonts) => icons.map((font) => Font.loadAsync(font));
-const cacheFonts = () => {
-  Font.loadAsync({
+const cacheIcons = (fonts) => fonts.map((font) => Font.loadAsync(font));
+const cacheFonts = async () => {
+  await Font.loadAsync({
     "ObjectSans-Regular": require("./assets/fonts/ObjectSans/ObjectSans-Regular.otf"),
     "ObjectSans-Slanted": require("./assets/fonts/ObjectSans/ObjectSans-Slanted.otf"),
   });
@@ -24,7 +24,7 @@ const cacheFonts = () => {
 export default function App() {
   const [isReady, setIsReady] = useState(false);
 
-  const startAsync = async () => {
+  const startAsync = () => {
     const images = cacheImages([require("./assets/splash.png")]);
     const icons = cacheIcons([Ionicons.font]);
     const fonts = cacheFonts();

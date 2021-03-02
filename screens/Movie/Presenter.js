@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components/native";
+import StyleSheet from "../../StyleSheet";
 
 const Container = styled.View`
   flex: 1;
@@ -21,8 +22,8 @@ export default ({
   console.log(nowPlaying);
 
   return (
-    <Container>
-      <Text>Movie</Text>
+    <Container style={StyleSheet.Container}>
+      <Text style={StyleSheet.Title}>Movie</Text>
     </Container>
   );
 };

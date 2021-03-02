@@ -16,6 +16,7 @@ export default () => (
       headerTintColor: "black",
       headerBackTitleVisible: false,
       headerTitleStyle: {
+        fontFamily: "ObjectSans-Regular",
         fontSize: "20px",
         fontWeight: "500",
       },

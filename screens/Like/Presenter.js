@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components/native";
+import StyleSheet from "../../StyleSheet";
 
 const Container = styled.View`
   flex: 1;
@@ -9,7 +10,7 @@ const Text = styled.Text``;
 
 export default () => {
   return (
-    <Container>
+    <Container style={StyleSheet.Container}>
       <Text>Like</Text>
     </Container>
   );

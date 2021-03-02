@@ -1,0 +1,50 @@
+import { StyleSheet } from "react-native";
+
+export default StyleSheet.create({
+  Gray: {
+    color: "rgb(190, 184, 184)",
+  },
+  Green: {
+    color: "rgb(0, 255, 84)",
+  },
+
+  Title: {
+    fontFamily: "ObjectSans-Regular",
+    fontWeight: "500",
+    fontSize: 20,
+    lineHeight: 1.1,
+  },
+  Text: {
+    fontFamily: "ObjectSans-Regular",
+    fontWeight: "400",
+    fontSize: 16,
+    lineHeight: 1.1,
+  },
+  SubText: {
+    fontFamily: "ObjectSans-Regular",
+    fontWeight: "400",
+    fontSize: 12,
+    lineHeight: 1.1,
+  },
+
+  BorderRadius: {
+    borderRadius: 8,
+  },
+
+  Container: {
+    backgroundColor: "rgb(190, 184, 184)",
+    flex: 1,
+    padding: 16,
+  },
+  Button: {
+    backgroundColor: "rgb(0, 255, 84)",
+    padding: 6,
+    borderRadius: 8,
+    textAlign: "center",
+  },
+  ButtonText: {
+    fontFamily: "ObjectSans-Regular",
+    fontWeight: "600",
+    fontSize: 12,
+  },
+});
