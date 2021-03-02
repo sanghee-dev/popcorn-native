@@ -1,9 +1,11 @@
 import React, { useState } from "react";
+import { Image } from "react-native";
 import AppLoading from "expo-app-loading";
 import { Asset } from "expo-asset";
 import * as Font from "expo-font";
 import { Ionicons } from "@expo/vector-icons";
-import { View, Text, Image } from "react-native";
+import { NavigationContainer } from "@react-navigation/native";
+import Stack from "./navigation/Stack";
 
 const cacheImages = (images) =>
   images.map((image) =>
@@ -11,7 +13,7 @@ const cacheImages = (images) =>
       ? Image.prefetch(image)
       : Asset.fromModule(image).downloadAsync()
   );
-const cacheIcons = (icons) => icons.map((icon) => Font.loadAsync(icon));
+const cacheIcons = (fonts) => icons.map((font) => Font.loadAsync(font));
 const cacheFonts = () => {
   Font.loadAsync({
     "ObjectSans-Regular": require("./assets/fonts/ObjectSans/ObjectSans-Regular.otf"),
@@ -30,17 +32,15 @@ export default function App() {
   };
   const onFinish = () => setIsReady(true);
 
-  return (
-    <View>
-      {isReady ? (
-        <Text>Ready</Text>
-      ) : (
-        <AppLoading
-          startAsync={startAsync}
-          onFinish={onFinish}
-          onError={console.warn}
-        />
-      )}
-    </View>
+  return isReady ? (
+    <NavigationContainer>
+      <Stack />
+    </NavigationContainer>
+  ) : (
+    <AppLoading
+      startAsync={startAsync}
+      onFinish={onFinish}
+      onError={console.warn}
+    />
   );
 }
