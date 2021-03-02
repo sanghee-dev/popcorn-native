@@ -36,7 +36,7 @@ export default ({ navigation: { setOptions }, route: { state } }) => {
               : `${platformName}heart`;
           return (
             <Ionicons
-              name={iconName}
+              name={focused ? iconName : `${iconName}-outline`}
               size={24}
               color={focused ? "black" : "rgb(95, 95, 95)"}
             />
