@@ -12,19 +12,19 @@ export default StyleSheet.create({
     fontFamily: "ObjectSans-Regular",
     fontWeight: "500",
     fontSize: 20,
-    lineHeight: 1.1,
+    lineHeight: 21,
   },
   Text: {
     fontFamily: "ObjectSans-Regular",
     fontWeight: "400",
     fontSize: 16,
-    lineHeight: 1.1,
+    lineHeight: 17,
   },
   SubText: {
     fontFamily: "ObjectSans-Regular",
     fontWeight: "400",
     fontSize: 12,
-    lineHeight: 1.1,
+    lineHeight: 13,
   },
 
   BorderRadius: {

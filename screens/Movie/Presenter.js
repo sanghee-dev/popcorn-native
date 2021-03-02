@@ -2,11 +2,8 @@ import React from "react";
 import styled from "styled-components/native";
 import StyleSheet from "../../StyleSheet";
 
-const Container = styled.View`
-  flex: 1;
-  background-color: rgb(190, 184, 184);
-`;
-const Text = styled.Text``;
+const Container = styled.View``;
+const Title = styled.Text``;
 
 export default ({
   loading,
@@ -23,7 +20,7 @@ export default ({
 
   return (
     <Container style={StyleSheet.Container}>
-      <Text style={StyleSheet.Title}>Movie</Text>
+      <Title style={StyleSheet.Title}>Movie</Title>
     </Container>
   );
 };
