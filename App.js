@@ -1,21 +1,24 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { useState } from "react";
+import AppLoading from "expo-app-loading";
+import { View, Text } from "react-native";
 
 export default function App() {
+  const [isReady, setIsReady] = useState(false);
+
+  const startAsync = async () => {};
+  const onFinish = () => setIsReady(true);
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
+    <View>
+      {isReady ? (
+        <Text>Ready</Text>
+      ) : (
+        <AppLoading
+          startAsync={startAsync}
+          onFinish={onFinish}
+          onError={console.warn}
+        />
+      )}
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
