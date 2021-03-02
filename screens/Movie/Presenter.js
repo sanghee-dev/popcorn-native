@@ -7,7 +7,19 @@ const Container = styled.View`
 `;
 const Text = styled.Text``;
 
-export default () => {
+export default ({
+  loading,
+  nowPlaying,
+  upcoming,
+  popular,
+  topRated,
+  nowPlayingError,
+  upcomingError,
+  popularError,
+  topRatedError,
+}) => {
+  console.log(nowPlaying);
+
   return (
     <Container>
       <Text>Movie</Text>

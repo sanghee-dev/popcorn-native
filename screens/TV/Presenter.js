@@ -7,7 +7,17 @@ const Container = styled.View`
 `;
 const Text = styled.Text``;
 
-export default () => {
+export default ({
+  loading,
+  airingToday,
+  onTheAir,
+  popular,
+  topRated,
+  airingTodayError,
+  onTheAirError,
+  popularError,
+  topRatedError,
+}) => {
   return (
     <Container>
       <Text>TV</Text>
