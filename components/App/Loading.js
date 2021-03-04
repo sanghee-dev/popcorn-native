@@ -20,11 +20,10 @@ const cacheFonts = async () => {
 };
 
 const Loading = ({ setIsReady }) => {
-  const startAsync = () => {
-    const images = cacheImages([require("../../assets/splash.png")]);
-    const icons = cacheIcons([Ionicons.font]);
-    const fonts = cacheFonts();
-    return Promise.all([...images, ...icons, ...fonts]);
+  const startAsync = async () => {
+    await cacheImages([require("../../assets/splash.png")]);
+    await cacheIcons([Ionicons.font]);
+    await cacheFonts();
   };
   const onFinish = () => setIsReady(true);
 
