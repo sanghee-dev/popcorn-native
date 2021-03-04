@@ -32,21 +32,7 @@ export default ({
         <ActivityIndicator color="rgb(0, 255, 84)" />
       ) : (
         <>
-          <SwiperContainer>
-            <Swiper controlsEnabled={false} loop timeout={3}>
-              {nowPlaying.map((movie) => (
-                <Slide
-                  key={movie.id}
-                  id={movie.id}
-                  title={movie.original_title}
-                  overview={movie.overview}
-                  vote={movie.vote_average}
-                  posterUrl={movie.poster_path}
-                  backdropUrl={movie.backdrop_path}
-                />
-              ))}
-            </Swiper>
-          </SwiperContainer>
+          <Slide movieList={nowPlaying} />
         </>
       )}
     </Container>

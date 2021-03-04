@@ -1,10 +1,11 @@
 import React from "react";
 import styled from "styled-components/native";
-import StyleSheet from "../../components/StyleSheet";
+import StyleSheet from "../StyleSheet";
 import PropTypes from "prop-types";
 import { Dimensions } from "react-native";
-import Poster from "../../components/Poster";
-import Vote from "../../components/Vote";
+import Poster from "../Poster";
+import Vote from "../Vote";
+import Swiper from "react-native-web-swiper";
 
 const { width: WIDTH, height: HEIGHT } = Dimensions.get("window");
 const Container = styled.View`
@@ -22,17 +23,24 @@ const Info = styled.View`
 `;
 const Title = styled.Text``;
 
-export default ({ id, title, overview, vote, posterUrl, backdropUrl }) => (
+export default ({ movieList }) => (
   <Container>
-    <PosterContainer>
-      <Poster posterUrl={posterUrl} resizeMode="cover" />
-    </PosterContainer>
+    {console.log(movieList)}
+    <Swiper controlsEnabled={false} loop timeout={3}>
+      {movieList.map((movie) => (
+        <>
+          <PosterContainer>
+            <Poster posterUrl={movie.poster_path} resizeMode="cover" />
+          </PosterContainer>
 
-    <Info>
-      <Title style={StyleSheet.Title} numberOfLines={1}>
-        {title}
-      </Title>
-      <Vote vote={vote} />
-    </Info>
+          <Info>
+            <Title style={StyleSheet.Title} numberOfLines={1}>
+              {movie.title}
+            </Title>
+            <Vote vote={movie.vote_average} />
+          </Info>
+        </>
+      ))}
+    </Swiper>
   </Container>
 );
