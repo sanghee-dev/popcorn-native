@@ -1,0 +1,40 @@
+import React from "react";
+import { Image } from "react-native";
+import AppLoading from "expo-app-loading";
+import { Asset } from "expo-asset";
+import * as Font from "expo-font";
+import { Ionicons } from "@expo/vector-icons";
+
+const cacheImages = (images) =>
+  images.map((image) =>
+    typeof image === "string"
+      ? Image.prefetch(image)
+      : Asset.fromModule(image).downloadAsync()
+  );
+const cacheIcons = (fonts) => fonts.map((font) => Font.loadAsync(font));
+const cacheFonts = async () => {
+  await Font.loadAsync({
+    "ObjectSans-Regular": require("../../assets/fonts/ObjectSans/ObjectSans-Regular.otf"),
+    "ObjectSans-Slanted": require("../../assets/fonts/ObjectSans/ObjectSans-Slanted.otf"),
+  });
+};
+
+const Loading = ({ setIsReady }) => {
+  const startAsync = () => {
+    const images = cacheImages([require("../../assets/splash.png")]);
+    const icons = cacheIcons([Ionicons.font]);
+    const fonts = cacheFonts();
+    return Promise.all([...images, ...icons, ...fonts]);
+  };
+  const onFinish = () => setIsReady(true);
+
+  return (
+    <AppLoading
+      startAsync={startAsync}
+      onFinish={onFinish}
+      onError={console.warn}
+    />
+  );
+};
+
+export default Loading;
