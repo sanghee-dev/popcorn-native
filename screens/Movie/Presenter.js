@@ -26,8 +26,6 @@ export default ({
   popularError,
   topRatedError,
 }) => {
-  console.log(nowPlaying);
-
   return (
     <Container style={StyleSheet.Container}>
       {loading ? (
