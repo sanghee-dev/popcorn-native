@@ -30,6 +30,12 @@ export default StyleSheet.create({
   BorderRadius: {
     borderRadius: 8,
   },
+  Border: {
+    borderRadius: 8,
+    borderStyle: "solid",
+    borderColor: "rgb(0, 255, 84)",
+    borderWidth: 1,
+  },
 
   Container: {
     backgroundColor: "rgb(190, 184, 184)",
