@@ -6,11 +6,13 @@ import Swiper from "react-native-web-swiper";
 import Slide from "../../components/Movie/Slide";
 
 const { width: WIDTH, height: HEIGHT } = Dimensions.get("window");
-const Container = styled.View``;
+const Container = styled.View`
+  justify-content: center;
+`;
 const Title = styled.Text``;
 const SwiperContainer = styled.View`
   width: 100%;
-  height: ${WIDTH / 3}px;
+  height: ${WIDTH}px;
 `;
 
 export default ({
@@ -32,7 +34,6 @@ export default ({
         <ActivityIndicator color="rgb(0, 255, 84)" />
       ) : (
         <>
-          <Title style={StyleSheet.Title}>Movie</Title>
           <SwiperContainer>
             <Swiper controlsEnabled={false} loop timeout={3}>
               {nowPlaying.map((movie) => (

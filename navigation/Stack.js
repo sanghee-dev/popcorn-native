@@ -13,6 +13,7 @@ export default () => (
         shadowColor: "rgb(190, 184, 184)",
         borderBottomColor: "rgb(190, 184, 184)",
       },
+      headerTitleAlign: "left",
       headerTintColor: "black",
       headerBackTitleVisible: false,
       headerTitleStyle: {
