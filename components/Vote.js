@@ -12,9 +12,6 @@ const HalfTitle = styled.Text`
   width: 9px;
   overflow: hidden;
 `;
-const Title = styled.Text`
-  color: rgb(0, 255, 84);
-`;
 const Flower = styled.Text`
   font-size: 20px;
 `;
@@ -22,7 +19,13 @@ const Flower = styled.Text`
 const Vote = ({ vote }) => {
   return (
     <Container>
-      <Title style={StyleSheet.Title}>{"❋".repeat(vote / 2)}</Title>
+      <Flower
+        style={{
+          color: `rgb(0, 255, 84)`,
+        }}
+      >
+        {"❋".repeat(vote / 2)}
+      </Flower>
       {vote % 2 > 1 && (
         <>
           {/* <HalfTitle>
