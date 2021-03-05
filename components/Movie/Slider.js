@@ -9,7 +9,9 @@ import { useNavigation } from "@react-navigation/native";
 import { TouchableOpacity } from "react-native";
 
 const { width: WIDTH, height: HEIGHT } = Dimensions.get("window");
-const Container = styled.View``;
+const Container = styled.View`
+  margin-bottom: 16px;
+`;
 const ScrollView = styled.ScrollView`
   width: 100%;
 `;
@@ -28,14 +30,17 @@ const PosterContainer = styled.View`
 const Info = styled.View`
   width: 100%;
 `;
-const Title = styled.Text``;
+const Title = styled.Text`
+  margin-bottom: 8px;
+`;
 
-const Slide = ({ movieList }) => {
+const Slide = ({ movieList, title = "Title" }) => {
   const navigation = useNavigation();
 
   return (
     <Container>
-      <ScrollView horizontal={true} showsHorizontalScrollIndicator={true}>
+      <Title style={StyleSheet.Title}>{title}</Title>
+      <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
         {movieList.map((movie) => (
           <Movie>
             <TouchableOpacity onPress={() => navigation.navigate("Detail")}>

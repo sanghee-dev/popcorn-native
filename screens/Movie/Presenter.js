@@ -2,12 +2,10 @@ import React from "react";
 import styled from "styled-components/native";
 import StyleSheet from "../../components/StyleSheet";
 import { Dimensions, ActivityIndicator } from "react-native";
-import Slide from "../../components/Movie/Slide";
+import Slider from "../../components/Movie/Slider";
 
 const { width: WIDTH, height: HEIGHT } = Dimensions.get("window");
-const Container = styled.View`
-  justify-content: center;
-`;
+const Container = styled.ScrollView``;
 const Title = styled.Text``;
 
 export default ({
@@ -22,12 +20,19 @@ export default ({
   topRatedError,
 }) => {
   return (
-    <Container style={StyleSheet.Container}>
+    <Container
+      style={StyleSheet.Container}
+      contentContainerStyle={{ flexGrow: 1, justifyContent: "center" }}
+    >
       {loading ? (
-        <ActivityIndicator color="rgb(0, 255, 84)" />
+        <ActivityContainer>
+          <ActivityIndicator color="rgb(0, 255, 84)" />
+        </ActivityContainer>
       ) : (
         <>
-          <Slide movieList={nowPlaying} />
+          <Slider movieList={nowPlaying} title="Now Playing Movies" />
+          <Slider movieList={upcoming} title="Upcoming Movies" />
+          <Slider movieList={popular} title="Popular Movies" />
         </>
       )}
     </Container>
