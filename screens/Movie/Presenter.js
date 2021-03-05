@@ -25,14 +25,13 @@ export default ({
       contentContainerStyle={{ flexGrow: 1, justifyContent: "center" }}
     >
       {loading ? (
-        <ActivityContainer>
-          <ActivityIndicator color="rgb(0, 255, 84)" />
-        </ActivityContainer>
+        <ActivityIndicator color="rgb(0, 255, 84)" />
       ) : (
         <>
           <Slider movieList={nowPlaying} title="Now Playing Movies" />
           <Slider movieList={upcoming} title="Upcoming Movies" />
           <Slider movieList={popular} title="Popular Movies" />
+          <Slider movieList={topRated} title="Top Rated Movies" />
         </>
       )}
     </Container>
