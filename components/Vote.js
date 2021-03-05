@@ -30,7 +30,7 @@ const Vote = ({ vote }) => {
           </HalfTitle> */}
           <Flower
             style={{
-              color: `rgba(0, 255, 84, ${(vote % 2) / 3})`,
+              color: `rgba(0, 255, 84, ${(vote % 2) / 2})`,
             }}
           >
             ❋
