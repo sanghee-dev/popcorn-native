@@ -6,12 +6,15 @@ import PropTypes from "prop-types";
 const Container = styled.View`
   flex-direction: row;
   align-items: center;
+  color: green;
 `;
 const HalfTitle = styled.Text`
   width: 9px;
   overflow: hidden;
 `;
-const Title = styled.Text``;
+const Title = styled.Text`
+  color: rgb(0, 255, 84);
+`;
 const Flower = styled.Text`
   font-size: 20px;
 `;
@@ -27,7 +30,7 @@ const Vote = ({ vote }) => {
           </HalfTitle> */}
           <Flower
             style={{
-              color: `rgba(0, 0, 0, ${(vote % 2) / 3})`,
+              color: `rgba(0, 255, 84, ${(vote % 2) / 3})`,
             }}
           >
             ❋

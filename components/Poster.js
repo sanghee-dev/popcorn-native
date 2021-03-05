@@ -9,7 +9,7 @@ const Image = styled.Image`
 `;
 
 const Poster = ({ posterUrl }) => {
-  return <Image resizeMode="contain" source={{ uri: imageApi(posterUrl) }} />;
+  return <Image resizeMode="cover" source={{ uri: imageApi(posterUrl) }} />;
 };
 
 Poster.propTypes = { posterUrl: PropTypes.string.isRequired };
