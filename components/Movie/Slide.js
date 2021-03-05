@@ -5,6 +5,8 @@ import PropTypes from "prop-types";
 import { Dimensions } from "react-native";
 import Poster from "../Poster";
 import Vote from "../Vote";
+import { useNavigation } from "@react-navigation/native";
+import { TouchableOpacity } from "react-native";
 
 const { width: WIDTH, height: HEIGHT } = Dimensions.get("window");
 const Container = styled.View``;
@@ -14,6 +16,7 @@ const ScrollView = styled.ScrollView`
 const Movie = styled.View`
   width: ${WIDTH / 3}px;
   margin-right: 16px;
+  margin-bottom: 16px;
 `;
 const PosterContainer = styled.View`
   width: ${WIDTH / 3}px;
@@ -27,27 +30,31 @@ const Info = styled.View`
 `;
 const Title = styled.Text``;
 
-export default ({ movieList }) => (
-  <Container>
-    <ScrollView
-      style={StyleSheet.Border}
-      horizontal={true}
-      showsHorizontalScrollIndicator={true}
-    >
-      {movieList.map((movie) => (
-        <Movie>
-          <PosterContainer>
-            <Poster posterUrl={movie.poster_path} />
-          </PosterContainer>
+const Slide = ({ movieList }) => {
+  const navigation = useNavigation();
 
-          <Info>
-            <Title style={StyleSheet.Title} numberOfLines={1}>
-              {movie.title}
-            </Title>
-            <Vote vote={movie.vote_average} />
-          </Info>
-        </Movie>
-      ))}
-    </ScrollView>
-  </Container>
-);
+  return (
+    <Container>
+      <ScrollView horizontal={true} showsHorizontalScrollIndicator={true}>
+        {movieList.map((movie) => (
+          <Movie>
+            <TouchableOpacity onPress={() => navigation.navigate("Detail")}>
+              <PosterContainer>
+                <Poster posterUrl={movie.poster_path} />
+              </PosterContainer>
+            </TouchableOpacity>
+
+            <Info>
+              <Title style={StyleSheet.Title} numberOfLines={1}>
+                {movie.title}
+              </Title>
+              <Vote vote={movie.vote_average} />
+            </Info>
+          </Movie>
+        ))}
+      </ScrollView>
+    </Container>
+  );
+};
+
+export default Slide;
