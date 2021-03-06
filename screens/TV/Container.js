@@ -36,7 +36,6 @@ export default ({}) => {
     let mounted = true;
     if (mounted) {
       getData();
-      setTv({ loading: false });
     }
     return () => (mounted = false);
   }, []);
