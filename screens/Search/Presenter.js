@@ -6,13 +6,14 @@ import Input from "../../components/Search/Input";
 const Container = styled.View``;
 const Title = styled.Text``;
 
-export default () => {
-  const [value, onChangeText] = React.useState("Search Movie or TV");
-
+export default ({ keyword, onChangeText, onSubmitEditing }) => {
   return (
     <Container style={StyleSheet.Container}>
-      <Title style={StyleSheet.Title}>Search</Title>
-      <Input />
+      <Input
+        keyword={keyword}
+        onChangeText={onChangeText}
+        onSubmitEditing={onSubmitEditing}
+      />
     </Container>
   );
 };

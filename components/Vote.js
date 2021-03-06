@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components/native";
-import StyleSheet from "./StyleSheet";
 import PropTypes from "prop-types";
 
 const Container = styled.View`
@@ -8,10 +7,10 @@ const Container = styled.View`
   align-items: center;
   color: green;
 `;
-const HalfTitle = styled.Text`
-  width: 9px;
-  overflow: hidden;
-`;
+// const HalfTitle = styled.Text`
+//   width: 9px;
+//   overflow: hidden;
+// `;
 const Flower = styled.Text`
   font-size: 20px;
 `;
