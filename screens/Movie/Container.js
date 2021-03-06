@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Presenter from "./Presenter";
-import { movieApi, tvApi } from "../../api";
+import { movieApi } from "../../api";
 
 export default () => {
   const [data, setData] = useState({
