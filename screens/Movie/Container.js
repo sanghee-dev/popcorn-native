@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import Presenter from "./Presenter";
-import { movieApi } from "../../api";
+import { movieApi, tvApi } from "../../api";
 
 export default () => {
-  const [movie, setMovie] = useState({
+  const [data, setData] = useState({
     loading: true,
     nowPlaying: [],
     upcoming: [],
@@ -20,7 +20,7 @@ export default () => {
     const [upcoming, upcomingError] = await movieApi.upcoming();
     const [popular, popularError] = await movieApi.popular();
     const [topRated, topRatedError] = await movieApi.topRated();
-    setMovie({
+    setData({
       nowPlaying,
       upcoming,
       popular,
@@ -40,5 +40,5 @@ export default () => {
     return () => (mounted = false);
   }, []);
 
-  return <Presenter {...movie} />;
+  return <Presenter {...data} />;
 };

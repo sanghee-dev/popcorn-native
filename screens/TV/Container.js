@@ -3,7 +3,7 @@ import Presenter from "./Presenter";
 import { tvApi } from "../../api";
 
 export default ({}) => {
-  const [tv, setTv] = useState({
+  const [data, setData] = useState({
     loading: true,
     airingToday: [],
     onTheAir: [],
@@ -20,7 +20,7 @@ export default ({}) => {
     const [onTheAir, onTheAirError] = await tvApi.onTheAir();
     const [popular, popularError] = await tvApi.popular();
     const [topRated, topRatedError] = await tvApi.topRated();
-    setTv({
+    setData({
       airingToday,
       onTheAir,
       popular,
@@ -40,5 +40,5 @@ export default ({}) => {
     return () => (mounted = false);
   }, []);
 
-  return <Presenter {...tv} />;
+  return <Presenter {...data} />;
 };

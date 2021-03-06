@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import styled from "styled-components/native";
-import StyleSheet from "../StyleSheet";
+import StyleSheet from "./StyleSheet";
 import { Ionicons } from "@expo/vector-icons";
 import PropTypes from "prop-types";
 import { Dimensions } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { TouchableOpacity } from "react-native";
-import Poster from "../Poster";
-import Vote from "../Vote";
+import Poster from "./Poster";
+import Vote from "./Vote";
 
 const { width: WIDTH, height: HEIGHT } = Dimensions.get("window");
 const Container = styled.View`
@@ -67,6 +67,12 @@ const Slide = ({ title, posterUrl, vote }) => {
       </Movie>
     </Container>
   );
+};
+
+Slide.propTypes = {
+  title: PropTypes.string.isRequired,
+  posterUrl: PropTypes.string.isRequired,
+  vote: PropTypes.number.isRequired,
 };
 
 export default Slide;
