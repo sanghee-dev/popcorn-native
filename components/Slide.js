@@ -8,6 +8,7 @@ import { useNavigation } from "@react-navigation/native";
 import { TouchableOpacity } from "react-native";
 import Poster from "./Poster";
 import Vote from "./Vote";
+import NoPoster from "./NoPoster";
 
 const { width: WIDTH, height: HEIGHT } = Dimensions.get("window");
 const Container = styled.View`
@@ -44,7 +45,11 @@ const Slide = ({ title, posterUrl, vote }) => {
       <Movie>
         <TouchableOpacity onPress={() => navigation.navigate("Detail")}>
           <PosterContainer>
-            <Poster posterUrl={posterUrl} />
+            {posterUrl?.length > 0 ? (
+              <Poster posterUrl={posterUrl} />
+            ) : (
+              <NoPoster />
+            )}
           </PosterContainer>
         </TouchableOpacity>
 
@@ -71,7 +76,7 @@ const Slide = ({ title, posterUrl, vote }) => {
 
 Slide.propTypes = {
   title: PropTypes.string.isRequired,
-  posterUrl: PropTypes.string.isRequired,
+  posterUrl: PropTypes.string,
   vote: PropTypes.number.isRequired,
 };
 
