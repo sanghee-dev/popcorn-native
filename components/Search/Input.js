@@ -1,7 +1,8 @@
 import React from "react";
-import styled from "styled-components/native";
+import styled, { css } from "styled-components/native";
 import PropTypes from "prop-types";
 import { Ionicons } from "@expo/vector-icons";
+import { Platform } from "react-native";
 
 const Container = styled.View`
   flex-direction: row;
@@ -17,6 +18,11 @@ const TextInput = styled.TextInput`
   border-radius: 24px;
   font-size: 20px;
   margin-bottom: 64px;
+  ${Platform.select({
+    web: css`
+      caret-color: rgb(0, 255, 84);
+    `,
+  })};
 `;
 const SearchIcon = styled.View`
   position: absolute;
@@ -25,6 +31,8 @@ const SearchIcon = styled.View`
 `;
 
 const Input = ({ keyword, onChangeText, onSubmitEditing }) => {
+  console.log(Platform.OS === "web");
+
   return (
     <Container>
       <SearchIcon>
@@ -34,12 +42,13 @@ const Input = ({ keyword, onChangeText, onSubmitEditing }) => {
         value={keyword}
         onChangeText={onChangeText}
         onSubmitEditing={onSubmitEditing}
+        maxLength={24}
         placeholder="Search Movies or TV shows..."
         placeholderTextColor="rgb(95, 95, 95)"
         selectionColor="rgb(0, 255, 84)"
         returnKeyType="search"
         clearTextOnFocus={true}
-        maxLength={24}
+        onFocus={() => console.log("focus")}
       />
     </Container>
   );

@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components/native";
 import StyleSheet from "../../components/StyleSheet";
-import PropTypes from "prop-types";
 import { Dimensions, ActivityIndicator } from "react-native";
 import Input from "../../components/Search/Input";
 import Slider from "../../components/Slider";
@@ -46,17 +45,6 @@ const Presenter = ({
       </ResultContainer>
     </Container>
   );
-};
-
-Presenter.propTypes = {
-  loading: PropTypes.bool.isRequired,
-  keyword: PropTypes.string.isRequired,
-  onChangeText: PropTypes.func.isRequired,
-  onSubmitEditing: PropTypes.func.isRequired,
-  movieResult: PropTypes.array.isRequired,
-  tvResult: PropTypes.array.isRequired,
-  movieResultError: PropTypes.string,
-  tvResultError: PropTypes.string,
 };
 
 export default Presenter;
