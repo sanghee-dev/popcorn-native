@@ -31,8 +31,6 @@ const SearchIcon = styled.View`
 `;
 
 const Input = ({ keyword, onChangeText, onSubmitEditing }) => {
-  console.log(Platform.OS === "web");
-
   return (
     <Container>
       <SearchIcon>
