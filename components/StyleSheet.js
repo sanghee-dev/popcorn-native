@@ -39,6 +39,11 @@ export default StyleSheet.create({
     borderColor: "rgb(0, 255, 84)",
     borderWidth: 1,
   },
+  Gradient: {
+    width: "100%",
+    height: "100%",
+    borderRadius: 8,
+  },
 
   Container: {
     backgroundColor: "rgb(190, 184, 184)",
