@@ -1,13 +1,12 @@
 import React from "react";
 import styled from "styled-components/native";
-import StyleSheet from "./StyleSheet";
 import { Dimensions } from "react-native";
 import Swiper from "react-native-web-swiper";
 import SwiperSlide from "./SwiperSlide";
 
 const { width: WIDTH, height: HEIGHT } = Dimensions.get("window");
 const Container = styled.View`
-  margin-bottom: 16px;
+  margin-bottom: 64px;
 `;
 const SwiperContainer = styled.View`
   width: 100%;
@@ -18,9 +17,9 @@ const SwiperSlider = ({ movieList }) => {
   console.log(movieList);
 
   return (
-    <Container>
+    <Container> 
       <SwiperContainer>
-        <Swiper controlsEnabled={false} loop timeout={3}>
+        <Swiper controlsEnabled={false} loop timeout={4}>
           {movieList.map((movie) => (
             <SwiperSlide
               key={movie.id}

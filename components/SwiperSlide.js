@@ -11,9 +11,7 @@ import Vote from "./Vote";
 import NoPoster from "./NoPoster";
 
 const { width: WIDTH, height: HEIGHT } = Dimensions.get("window");
-const Container = styled.View`
-  margin-bottom: 16px;
-`;
+const Container = styled.View``;
 const Movie = styled.View`
   width: 100%;
 `;
