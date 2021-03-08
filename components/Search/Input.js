@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled, { css } from "styled-components/native";
 import PropTypes from "prop-types";
 import { Ionicons } from "@expo/vector-icons";
@@ -31,22 +31,34 @@ const SearchIcon = styled.View`
 `;
 
 const Input = ({ keyword, onChangeText, onSubmitEditing }) => {
+  const [isFocused, setIsFocused] = useState(false);
+
   return (
     <Container>
       <SearchIcon>
-        <Ionicons name="search" size={20} color="rgb(95, 95, 95)" />
+        <Ionicons
+          name="search"
+          size={20}
+          color={isFocused ? "rgb(0, 255, 84)" : "rgb(95, 95, 95)"}
+        />
       </SearchIcon>
       <TextInput
         value={keyword}
         onChangeText={onChangeText}
         onSubmitEditing={onSubmitEditing}
+        onFocus={() => setIsFocused(true)}
+        onBlur={() => setIsFocused(false)}
+        style={{
+          borderColor: isFocused ? "rgb(0, 255, 84)" : "rgb(95, 95, 95)",
+        }}
         maxLength={24}
         placeholder="Search Movies or TV shows..."
-        placeholderTextColor="rgb(95, 95, 95)"
+        placeholderTextColor={
+          isFocused ? "rgb(150, 150, 150)" : "rgb(95, 95, 95)"
+        }
         selectionColor="rgb(0, 255, 84)"
         returnKeyType="search"
         clearTextOnFocus={true}
-        onFocus={() => console.log("focus")}
       />
     </Container>
   );
