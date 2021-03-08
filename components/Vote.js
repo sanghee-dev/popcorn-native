@@ -5,7 +5,6 @@ import PropTypes from "prop-types";
 const Container = styled.View`
   flex-direction: row;
   align-items: center;
-  color: green;
 `;
 // const HalfTitle = styled.Text`
 //   width: 9px;

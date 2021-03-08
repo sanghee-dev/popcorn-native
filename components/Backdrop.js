@@ -13,7 +13,7 @@ const Backdrop = ({ backdropUrl }) => {
     <Image
       resizeMode="cover"
       source={{ uri: imageApi(backdropUrl) }}
-      blurRadius={10}
+      blurRadius={4}
     />
   );
 };

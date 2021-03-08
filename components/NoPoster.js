@@ -10,24 +10,30 @@ const Container = styled.View`
   border-radius: 8px;
 `;
 
-const NoPoster = () => {
+const NoPoster = ({ index }) => {
   const [isActive, setIsActive] = useState(false);
 
   useFocusEffect(
     React.useCallback(() => {
       setIsActive(true);
       return () => {
-        isActive = false;
+        setIsActive(false);
       };
     }, [])
   );
 
   return (
     <Container>
-      <LinearGradient
-        style={StyleSheet.Gradient}
-        colors={["rgba(0, 255, 84, 0)", "rgba(0, 255, 84, 1)"]}
-      />
+      {isActive && (
+        <LinearGradient
+          style={StyleSheet.Gradient}
+          colors={
+            index % 2 === 0
+              ? ["rgba(0, 255, 84, 0)", "rgba(0, 255, 84, 1)"]
+              : ["rgba(0, 255, 84, 1)", "rgba(0, 255, 84, 0)"]
+          }
+        />
+      )}
     </Container>
   );
 };
