@@ -11,13 +11,10 @@ import Vote from "./Vote";
 import NoPoster from "./NoPoster";
 
 const { width: WIDTH, height: HEIGHT } = Dimensions.get("window");
-const Container = styled.View`
-  margin-bottom: 16px;
-`;
+const Container = styled.View``;
 const Movie = styled.View`
   width: ${WIDTH / 3}px;
   margin-right: 16px;
-  margin-bottom: 16px;
 `;
 const PosterContainer = styled.View`
   width: ${WIDTH / 3}px;
@@ -36,7 +33,7 @@ const LikeButton = styled.Text`
   bottom: 20px;
 `;
 
-const Slide = ({ title, posterUrl, vote }) => {
+const Slide = ({ title, posterUrl, vote, index }) => {
   const navigation = useNavigation();
   const [liked, setLiked] = useState(false);
 
@@ -48,7 +45,7 @@ const Slide = ({ title, posterUrl, vote }) => {
             {posterUrl?.length > 0 ? (
               <Poster posterUrl={posterUrl} />
             ) : (
-              <NoPoster />
+              <NoPoster index={index} />
             )}
           </PosterContainer>
         </TouchableOpacity>
@@ -58,7 +55,7 @@ const Slide = ({ title, posterUrl, vote }) => {
             <Ionicons
               name={liked ? "heart" : "heart-outline"}
               size={20}
-              color={liked ? "rgb(255, 0, 84)" : "rgb(190, 184, 184)"}
+              color={liked ? "rgb(255, 0, 84)" : "rgb(210, 204, 204)"}
             />
           </LikeButton>
         </TouchableOpacity>

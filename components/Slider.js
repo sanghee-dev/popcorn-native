@@ -4,7 +4,7 @@ import StyleSheet from "./StyleSheet";
 import Slide from "./Slide";
 
 const Container = styled.View`
-  margin-bottom: 16px;
+  margin-bottom: 32px;
 `;
 const ScrollView = styled.ScrollView`
   width: 100%;
@@ -18,12 +18,13 @@ const Slider = ({ movieList, title = "Title" }) => {
     <Container>
       <Title style={StyleSheet.Title}>{title}</Title>
       <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
-        {movieList.map((movie) => (
+        {movieList.map((movie, index) => (
           <Slide
             key={movie.id}
             title={movie.title || movie.name}
             posterUrl={movie.poster_path}
             vote={movie.vote_average}
+            index={index}
           />
         ))}
       </ScrollView>

@@ -10,6 +10,9 @@ export default StyleSheet.create({
   DarkGray: {
     color: "rgb(95, 95, 95)",
   },
+  LightGray: {
+    color: "rgb(210, 204, 204)",
+  },
 
   Title: {
     fontFamily: "ObjectSans-Regular",
