@@ -49,6 +49,18 @@ export default ({ navigation: { setOptions }, route: { state } }) => {
           backgroundColor: "rgb(190, 184, 184)",
           borderTopColor: "rgb(190, 184, 184)",
         },
+        tabBarOptions: {
+          activeTintColor: "white",
+          inactiveTintColor: "#D3D3D3",
+          style: {
+            backgroundColor: "green",
+            borderTopWidth: 1,
+            borderTopColor: "#D3D3D3",
+          },
+          indicatorStyle: {
+            backgroundColor: "red",
+          },
+        },
       }}
     >
       <Tab.Screen name="Home" component={Home} />
