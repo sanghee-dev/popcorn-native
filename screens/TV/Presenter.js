@@ -3,6 +3,7 @@ import styled from "styled-components/native";
 import StyleSheet from "../../components/StyleSheet";
 import { Dimensions, ActivityIndicator } from "react-native";
 import Slider from "../../components/Slider";
+import SwiperSlider from "../../components/SwiperSlider";
 
 const { width: WIDTH, height: HEIGHT } = Dimensions.get("window");
 const Container = styled.ScrollView``;
@@ -28,7 +29,7 @@ export default ({
         <ActivityIndicator color="rgb(0, 255, 84)" />
       ) : (
         <>
-          <Slider movieList={airingToday} title="Airing Today Shows" />
+          <SwiperSlider movieList={airingToday} />
           <Slider movieList={onTheAir} title="On The Air Shows" />
           <Slider movieList={popular} title="Popular Shows" />
           <Slider movieList={topRated} title="Top Rated Shows" />
