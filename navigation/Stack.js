@@ -1,16 +1,31 @@
 import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
-import styled from "styled-components/native";
+import styled, { css } from "styled-components/native";
 import { Ionicons } from "@expo/vector-icons";
+import { Platform } from "react-native";
 import Tab from "./Tab";
 import Detail from "../screens/Detail";
 
 const Stack = createStackNavigator();
 const Logo = styled.Text`
-  font-size: 32px;
+  font-size: 28px;
   margin-left: 16px;
-  margin-top: 4px;
+  margin-top: -4px;
 `;
+// const BackButton = styled.Text`
+//   font-size: 20px;
+//   margin-left: 16px;
+//   ${Platform.select({
+//     ios: css`
+//       margin-top: 4px;
+//       font-size: 32px;
+//     `,
+//     android: css`
+//       margin-top: 4px;
+//       font-size: 32px;
+//     `,
+//   })};
+// `;
 
 export default () => {
   return (
@@ -43,16 +58,15 @@ export default () => {
         component={Detail}
         options={({ navigation }) => ({
           headerLeft: () => (
-            <Logo onPress={() => navigation.goBack(null)}>≪</Logo>
-            // <Ionicons
-            //   name="arrow-back-outline"
-            //   onPress={() => navigation.goBack(null)}
-            //   style={{
-            //     fontSize: "24px",
-            //     marginLeft: 12,
-            //     marginTop: -2,
-            //   }}
-            // />
+            // <BackButton onPress={() => navigation.goBack(null)}>≪</BackButton>
+            <Ionicons
+              name="arrow-back-outline"
+              onPress={() => navigation.goBack(null)}
+              style={{
+                fontSize: "24px",
+                marginLeft: 16,
+              }}
+            />
           ),
         })}
       />
