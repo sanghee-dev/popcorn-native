@@ -16,7 +16,7 @@ const TextInput = styled.TextInput`
   padding-left: 38px;
   padding-right: 16px;
   border-radius: 24px;
-  font-size: 20px;
+  font-size: 18px;
   margin-bottom: 64px;
   ${Platform.select({
     web: css`
@@ -40,7 +40,7 @@ const Input = ({ keyword, onChangeText, onSubmitEditing }) => {
         <Ionicons
           name="search"
           size={20}
-          color={isFocused ? "rgb(0, 255, 84)" : "rgb(95, 95, 95)"}
+          color={isFocused ? "rgb(150, 150, 150)" : "rgb(95, 95, 95)"}
         />
       </SearchIcon>
       <TextInput
