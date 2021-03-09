@@ -40,7 +40,15 @@ const LikeButton = styled.Text`
   bottom: 12px;
 `;
 
-const SwiperSlide = ({ title, id, backdropUrl, vote, overview, release }) => {
+const SwiperSlide = ({
+  id,
+  title,
+  posterUrl,
+  backdropUrl,
+  vote,
+  overview,
+  release,
+}) => {
   const navigation = useNavigation();
   const [liked, setLiked] = useState(false);
 
@@ -59,7 +67,19 @@ const SwiperSlide = ({ title, id, backdropUrl, vote, overview, release }) => {
           </VoteContainer>
         </Info>
 
-        <TouchableOpacity onPress={() => navigation.navigate("Detail")}>
+        <TouchableOpacity
+          onPress={() =>
+            navigation.navigate("Detail", {
+              id,
+              title,
+              posterUrl,
+              backdropUrl,
+              vote,
+              overview,
+              release,
+            })
+          }
+        >
           <BackdroprContainer>
             {backdropUrl?.length > 0 ? (
               <Backdrop backdropUrl={backdropUrl} />

@@ -24,7 +24,10 @@ const Slider = ({ movieList, title = "Title" }) => {
             id={movie.id}
             title={movie.title || movie.name}
             posterUrl={movie.poster_path}
+            backdropUrl={movie.backdrop_path}
             vote={movie.vote_average}
+            overview={movie.overview}
+            release={movie.release_date}
           />
         ))}
       </ScrollView>

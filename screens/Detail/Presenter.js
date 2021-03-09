@@ -1,31 +1,39 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components/native";
 import StyleSheet from "../../components/StyleSheet";
-import { ActivityIndicator, RefreshControl } from "react-native";
+import { Dimensions, ActivityIndicator } from "react-native";
+import PropTypes from "prop-types";
 import Slider from "../../components/Slider";
+import Poster from "../../components/Poster";
+import Vote from "../../components/Vote";
+import NoPoster from "../../components/NoPoster";
 
+const { width: WIDTH, height: HEIGHT } = Dimensions.get("window");
 const Container = styled.ScrollView``;
 const Title = styled.Text``;
+const PosterContainer = styled.View`
+  width: ${WIDTH / 3}px;
+  height: ${WIDTH / 2}px;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 16px;
+`;
 
-export default ({ loading, nowPlaying, refreshFn }) => {
-  const [refreshing, setRefreshing] = useState(false);
-  const onRefresh = async () => {
-    setRefreshing(true);
-    await refreshFn();
-    setRefreshing(false);
-  };
-
+const Presenter = ({
+  loading,
+  nowPlaying,
+  id,
+  title,
+  posterUrl,
+  backdropUrl,
+  vote,
+  overview,
+  release,
+}) => {
   return (
     <Container
       style={StyleSheet.Container}
       contentContainerStyle={{ flexGrow: 1, justifyContent: "center" }}
-      refreshControl={
-        <RefreshControl
-          onRefresh={onRefresh}
-          refreshing={refreshing}
-          tintColor="rgb(0, 255, 84)"
-        />
-      }
       contentContainerStyle={{
         flex: loading ? 1 : 0,
         justifyContent: loading ? "center" : "flex-start",
@@ -35,9 +43,27 @@ export default ({ loading, nowPlaying, refreshFn }) => {
         <ActivityIndicator color="rgb(0, 255, 84)" />
       ) : (
         <>
-          <Slider movieList={nowPlaying} title="Now Playing Movies" />
+          <Title style={StyleSheet.Title}>{title}</Title>
+          <Vote vote={vote} />
+          <PosterContainer>
+            {posterUrl?.length > 0 ? (
+              <Poster posterUrl={posterUrl} />
+            ) : (
+              <NoPoster id={id} />
+            )}
+          </PosterContainer>
+          {/* <Slider movieList={nowPlaying} title="Now Playing Movies" /> */}
         </>
       )}
     </Container>
   );
 };
+
+Presenter.propTypes = {
+  loading: PropTypes.bool.isRequired,
+  title: PropTypes.string.isRequired,
+  posterUrl: PropTypes.string,
+  vote: PropTypes.number.isRequired,
+};
+
+export default Presenter;

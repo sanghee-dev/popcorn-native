@@ -33,14 +33,34 @@ const LikeButton = styled.Text`
   bottom: 20px;
 `;
 
-const Slide = ({ title, id, posterUrl, vote }) => {
+const Slide = ({
+  title,
+  id,
+  posterUrl,
+  backdropUrl,
+  vote,
+  overview,
+  release,
+}) => {
   const navigation = useNavigation();
   const [liked, setLiked] = useState(false);
 
   return (
     <Container>
       <Movie>
-        <TouchableOpacity onPress={() => navigation.navigate("Detail")}>
+        <TouchableOpacity
+          onPress={() =>
+            navigation.navigate("Detail", {
+              title,
+              id,
+              posterUrl,
+              backdropUrl,
+              vote,
+              overview,
+              release,
+            })
+          }
+        >
           <PosterContainer>
             {posterUrl?.length > 0 ? (
               <Poster posterUrl={posterUrl} />
