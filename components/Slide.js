@@ -33,7 +33,7 @@ const LikeButton = styled.Text`
   bottom: 20px;
 `;
 
-const Slide = ({ title, posterUrl, vote, index }) => {
+const Slide = ({ title, id, posterUrl, vote }) => {
   const navigation = useNavigation();
   const [liked, setLiked] = useState(false);
 
@@ -45,7 +45,7 @@ const Slide = ({ title, posterUrl, vote, index }) => {
             {posterUrl?.length > 0 ? (
               <Poster posterUrl={posterUrl} />
             ) : (
-              <NoPoster index={index} />
+              <NoPoster id={id} />
             )}
           </PosterContainer>
         </TouchableOpacity>

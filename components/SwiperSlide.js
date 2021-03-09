@@ -33,7 +33,7 @@ const LikeButton = styled.Text`
   bottom: 20px;
 `;
 
-const SwiperSlide = ({ title, backdropUrl, vote, overview, release }) => {
+const SwiperSlide = ({ title, id, backdropUrl, vote, overview, release }) => {
   const navigation = useNavigation();
   const [liked, setLiked] = useState(false);
 
@@ -45,7 +45,7 @@ const SwiperSlide = ({ title, backdropUrl, vote, overview, release }) => {
             {backdropUrl?.length > 0 ? (
               <Backdrop backdropUrl={backdropUrl} />
             ) : (
-              <NoPoster />
+              <NoPoster id={id} />
             )}
           </BackdroprContainer>
         </TouchableOpacity>

@@ -17,12 +17,13 @@ const SwiperSlider = ({ movieList }) => {
   console.log(movieList);
 
   return (
-    <Container> 
+    <Container>
       <SwiperContainer>
         <Swiper controlsEnabled={false} loop timeout={4}>
           {movieList.map((movie) => (
             <SwiperSlide
               key={movie.id}
+              id={movie.id}
               title={movie.title || movie.name}
               backdropUrl={movie.backdrop_path}
               vote={movie.vote_average}

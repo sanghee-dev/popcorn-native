@@ -18,13 +18,13 @@ const Slider = ({ movieList, title = "Title" }) => {
     <Container>
       <Title style={StyleSheet.Title}>{title}</Title>
       <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
-        {movieList.map((movie, index) => (
+        {movieList.map((movie) => (
           <Slide
             key={movie.id}
+            id={movie.id}
             title={movie.title || movie.name}
             posterUrl={movie.poster_path}
             vote={movie.vote_average}
-            index={index}
           />
         ))}
       </ScrollView>
