@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components/native";
 import StyleSheet from "../../components/StyleSheet";
-import { Dimensions, ActivityIndicator } from "react-native";
+import { ActivityIndicator, RefreshControl } from "react-native";
 import Slider from "../../components/Slider";
 import SwiperSlider from "../../components/SwiperSlider";
 
@@ -13,15 +13,26 @@ export default ({
   upcoming,
   popular,
   topRated,
-  nowPlayingError,
-  upcomingError,
-  popularError,
-  topRatedError,
+  refreshFn,
 }) => {
+  const [refreshing, setRefreshing] = useState(false);
+  const onRefresh = async () => {
+    setRefreshing(true);
+    await refreshFn();
+    setRefreshing(false);
+  };
+
   return (
     <Container
       style={StyleSheet.Container}
       contentContainerStyle={{ flexGrow: 1, justifyContent: "center" }}
+      refreshControl={
+        <RefreshControl
+          onRefresh={onRefresh}
+          refreshing={refreshing}
+          tintColor="rgb(0, 255, 84)"
+        />
+      }
     >
       {loading ? (
         <ActivityIndicator color="rgb(0, 255, 84)" />

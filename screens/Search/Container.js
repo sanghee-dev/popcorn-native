@@ -22,6 +22,7 @@ export default () => {
     const [movieResult, movieResultError] = await movieApi.search(keyword);
     const [tvResult, tvResultError] = await tvApi.search(keyword);
     setData({
+      loading: false,
       movieResult,
       tvResult,
       movieResultError,
@@ -33,7 +34,6 @@ export default () => {
     let mounted = true;
     if (mounted) {
       getData();
-      setData({ loading: false });
     }
     return () => (mounted = false);
   }, [keyword]);
@@ -44,6 +44,7 @@ export default () => {
       onChangeText={onChangeText}
       onSubmitEditing={onSubmitEditing}
       {...data}
+      refreshFn={getData}
     />
   );
 };

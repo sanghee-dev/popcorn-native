@@ -21,6 +21,7 @@ export default ({}) => {
     const [popular, popularError] = await tvApi.popular();
     const [topRated, topRatedError] = await tvApi.topRated();
     setData({
+      loading: false,
       airingToday,
       onTheAir,
       popular,
@@ -40,5 +41,5 @@ export default ({}) => {
     return () => (mounted = false);
   }, []);
 
-  return <Presenter {...data} />;
+  return <Presenter {...data} refreshFn={getData} />;
 };

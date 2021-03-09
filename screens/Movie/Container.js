@@ -21,6 +21,7 @@ export default () => {
     const [popular, popularError] = await movieApi.popular();
     const [topRated, topRatedError] = await movieApi.topRated();
     setData({
+      loading: false,
       nowPlaying,
       upcoming,
       popular,
@@ -40,5 +41,5 @@ export default () => {
     return () => (mounted = false);
   }, []);
 
-  return <Presenter {...data} />;
+  return <Presenter {...data} refreshFn={getData} />;
 };
