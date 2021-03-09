@@ -1,5 +1,5 @@
 import React, { useLayoutEffect } from "react";
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs";
 import Home from "../screens/Home";
 import Movie from "../screens/Movie";
 import TV from "../screens/TV";
@@ -8,7 +8,7 @@ import Like from "../screens/Like";
 import { Ionicons } from "@expo/vector-icons";
 import { Platform } from "react-native";
 
-const Tab = createBottomTabNavigator();
+const Tab = createMaterialBottomTabNavigator();
 
 export default ({ navigation: { setOptions }, route: { state } }) => {
   useLayoutEffect(() => {
@@ -43,13 +43,19 @@ export default ({ navigation: { setOptions }, route: { state } }) => {
           );
         },
       })}
-      tabBarOptions={{
-        showLabel: false,
-        style: {
-          backgroundColor: "rgb(190, 184, 184)",
-          borderTopColor: "rgb(190, 184, 184)",
-        },
+      initialRouteName="Home"
+      activeColor="black"
+      barStyle={{
+        backgroundColor: "rgb(190, 184, 184)",
       }}
+
+      // tabBarOptions={{
+      //   showLabel: false,
+      //   style: {
+      //     backgroundColor: "rgb(190, 184, 184)",
+      //     borderTopColor: "rgb(190, 184, 184)",
+      //   },
+      // }}
     >
       <Tab.Screen name="Home" component={Home} />
       <Tab.Screen name="Movie" component={Movie} />
