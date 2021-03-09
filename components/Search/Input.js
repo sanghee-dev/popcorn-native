@@ -21,6 +21,7 @@ const TextInput = styled.TextInput`
   ${Platform.select({
     web: css`
       caret-color: rgb(0, 255, 84);
+      outline-style: none;
     `,
   })};
 `;
