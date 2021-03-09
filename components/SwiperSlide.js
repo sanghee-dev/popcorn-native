@@ -11,26 +11,33 @@ import Vote from "./Vote";
 import NoPoster from "./NoPoster";
 
 const { width: WIDTH, height: HEIGHT } = Dimensions.get("window");
-const Container = styled.View``;
+const Container = styled.View`
+  height: 100%;
+`;
 const Movie = styled.View`
   width: 100%;
+  height: 100%;
 `;
 const BackdroprContainer = styled.View`
   width: 100%;
-  height: ${WIDTH / 2}px;
+  height: ${WIDTH / 2.5}px;
   border-radius: 8px;
   overflow: hidden;
-  position: absolute;
+  margin: 8px 0;
 `;
 const Info = styled.View`
   width: 100%;
-  padding: 8px;
+  flex-direction: row;
+  justify-content: space-between;
+`;
+const VoteContainer = styled.View`
+  font-size: 24px;
 `;
 const Text = styled.Text``;
 const LikeButton = styled.Text`
   position: absolute;
   left: ${WIDTH - 60}px;
-  bottom: 20px;
+  bottom: 12px;
 `;
 
 const SwiperSlide = ({ title, id, backdropUrl, vote, overview, release }) => {
@@ -40,6 +47,18 @@ const SwiperSlide = ({ title, id, backdropUrl, vote, overview, release }) => {
   return (
     <Container>
       <Movie>
+        <Info>
+          <Text style={StyleSheet.Title} numberOfLines={1}>
+            {title}
+          </Text>
+          {/* <Text style={StyleSheet.Title} numberOfLines={1}>
+            {release.substring(2).replaceAll("-", ".")}
+          </Text> */}
+          <VoteContainer>
+            <Vote vote={vote} />
+          </VoteContainer>
+        </Info>
+
         <TouchableOpacity onPress={() => navigation.navigate("Detail")}>
           <BackdroprContainer>
             {backdropUrl?.length > 0 ? (
@@ -61,12 +80,7 @@ const SwiperSlide = ({ title, id, backdropUrl, vote, overview, release }) => {
         </TouchableOpacity>
 
         <Info>
-          <Text style={StyleSheet.Text} numberOfLines={1}>
-            {title}
-          </Text>
-          <Vote vote={vote} />
-          <Text style={StyleSheet.Text}>{release}</Text>
-          <Text style={StyleSheet.Text} numberOfLines={3}>
+          <Text style={StyleSheet.Subtitle} numberOfLines={3}>
             {overview}
           </Text>
         </Info>

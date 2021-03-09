@@ -20,6 +20,12 @@ export default StyleSheet.create({
     fontSize: 20,
     lineHeight: 21,
   },
+  Subtitle: {
+    fontFamily: "ObjectSans-Regular",
+    fontWeight: "500",
+    fontSize: 18,
+    lineHeight: 19,
+  },
   Text: {
     fontFamily: "ObjectSans-Regular",
     fontWeight: "400",

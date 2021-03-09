@@ -10,7 +10,11 @@ const Stack = createStackNavigator();
 const Logo = styled.Text`
   font-size: 28px;
   margin-left: 16px;
-  margin-top: -4px;
+  ${Platform.select({
+    web: css`
+      margin-top: -4px;
+    `,
+  })};
 `;
 // const BackButton = styled.Text`
 //   font-size: 20px;

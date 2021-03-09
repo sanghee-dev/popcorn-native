@@ -10,7 +10,7 @@ const Container = styled.View`
 `;
 const SwiperContainer = styled.View`
   width: 100%;
-  height: ${WIDTH / 2}px;
+  height: ${WIDTH / 2 + 60}px;
 `;
 
 const SwiperSlider = ({ movieList }) => {
