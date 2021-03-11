@@ -56,7 +56,8 @@ const Presenter = ({
           <VideoSlider videoList={video} />
           <CreditSlider creditList={credits.cast} />
 
-          <Vote vote={vote} />
+          <Vote vote={vote} fontSize={20} />
+
           <PosterContainer>
             {posterUrl?.length > 0 ? (
               <Poster posterUrl={posterUrl} />

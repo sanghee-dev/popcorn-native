@@ -4,39 +4,29 @@ import PropTypes from "prop-types";
 
 const Container = styled.View`
   flex-direction: row;
-  align-items: center;
 `;
-// const HalfTitle = styled.Text`
-//   width: 9px;
-//   overflow: hidden;
-// `;
-const Flower = styled.Text`
-  font-size: 20px;
-`;
+const Flower = styled.Text``;
 
-const Vote = ({ vote }) => {
+const Vote = ({ vote, fontSize = 20 }) => {
   return (
     <Container>
       <Flower
         style={{
           color: `rgb(0, 255, 84)`,
+          fontSize: fontSize,
         }}
       >
         {"❋".repeat(vote / 2)}
       </Flower>
       {vote % 2 > 1 && (
-        <>
-          {/* <HalfTitle>
-            <Flower style={StyleSheet.Title}>❋</Flower>
-          </HalfTitle> */}
-          <Flower
-            style={{
-              color: `rgba(0, 255, 84, ${(vote % 2) / 2})`,
-            }}
-          >
-            ❋
-          </Flower>
-        </>
+        <Flower
+          style={{
+            color: `rgba(0, 255, 84, ${(vote % 2) / 2})`,
+            fontSize: fontSize,
+          }}
+        >
+          ❋
+        </Flower>
       )}
     </Container>
   );
