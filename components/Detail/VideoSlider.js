@@ -21,8 +21,6 @@ const VideoContainer = styled.View`
 const Title = styled.Text``;
 
 const Slider = ({ videoList }) => {
-  console.log(Platform.OS);
-
   return (
     <Container>
       <SwiperContainer>
@@ -32,9 +30,9 @@ const Slider = ({ videoList }) => {
               {Platform.OS === "web" ? (
                 <iframe
                   src={`https://www.youtube.com/embed/${video.key}`}
-                  frameborder="0"
+                  frameBorder="0"
                   allow="autoplay; encrypted-media"
-                  allowfullscreen
+                  allowFullScreen
                 />
               ) : (
                 <WebView
