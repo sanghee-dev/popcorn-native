@@ -3,6 +3,7 @@ import styled from "styled-components/native";
 import StyleSheet from "../StyleSheet";
 import { Dimensions } from "react-native";
 import Swiper from "react-native-web-swiper";
+import Poster from "../Poster";
 
 const { width: WIDTH, height: HEIGHT } = Dimensions.get("window");
 const Container = styled.View`
@@ -10,25 +11,44 @@ const Container = styled.View`
 `;
 const SwiperContainer = styled.View`
   width: 100%;
-  height: ${WIDTH / 1.7}px;
+  height: ${WIDTH / 3}px;
 `;
 const CreditContainer = styled.View`
   width: 100%;
-  height: ${WIDTH / 1.7}px;
+  height: ${WIDTH / 3}px;
   overflow: hidden;
+  flex-direction: row;
+`;
+const Info = styled.View`
+  width: ${(WIDTH / 3) * 2 - 32}px;
+`;
+const PosterContainer = styled.View`
+  width: ${WIDTH / 3}px;
+  height: ${WIDTH / 3}px;
+  border-radius: 8px;
+  overflow: hidden;
+`;
+const ActorName = styled.Text`
+  color: "rgb(95, 95, 95)";
 `;
 const Title = styled.Text``;
 
-const CreditSlider = ({ id, creditList }) => {
-  console.log(creditList);
-
+const CreditSlider = ({ creditList }) => {
   return (
     <Container>
       <SwiperContainer>
         <Swiper controlsEnabled={false} loop timeout={4}>
           {creditList.map((credit) => (
             <CreditContainer key={credit.id} style={StyleSheet.BorderRadius}>
-              <Title>credit</Title>
+              <Info>
+                <Title style={StyleSheet.Title}>{credit.character}</Title>
+                <ActorName style={StyleSheet.Title}>
+                  {credit.original_name}
+                </ActorName>
+              </Info>
+              <PosterContainer>
+                <Poster posterUrl={credit.profile_path} />
+              </PosterContainer>
             </CreditContainer>
           ))}
         </Swiper>

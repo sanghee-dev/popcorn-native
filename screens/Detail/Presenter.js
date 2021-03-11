@@ -54,7 +54,7 @@ const Presenter = ({
       ) : (
         <>
           <VideoSlider videoList={video} />
-          <CreditSlider id={credits.id} creditList={credits.cast} />
+          <CreditSlider creditList={credits.cast} />
 
           <Vote vote={vote} />
           <PosterContainer>
