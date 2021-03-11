@@ -13,7 +13,7 @@ const Title = styled.Text`
   margin-bottom: 8px;
 `;
 
-const Slider = ({ movieList, title = "Title" }) => {
+const Slider = ({ isTV = false, movieList, title = "Title" }) => {
   return (
     <Container>
       <Title style={StyleSheet.Title}>{title}</Title>
@@ -28,6 +28,7 @@ const Slider = ({ movieList, title = "Title" }) => {
             vote={movie.vote_average}
             overview={movie.overview}
             release={movie.release_date}
+            isTV={isTV}
           />
         ))}
       </ScrollView>

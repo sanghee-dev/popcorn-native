@@ -1,23 +1,29 @@
 import React, { useLayoutEffect, useState } from "react";
 import Presenter from "./Presenter";
-import { movieApi } from "../../api";
+import { movieApi, tvApi } from "../../api";
 
 export default ({
   navigation: { setOptions },
   route: {
-    params: { id, title, posterUrl, backdropUrl, vote, overview, release },
+    params: {
+      isTV,
+      id,
+      title,
+      posterUrl,
+      backdropUrl,
+      vote,
+      overview,
+      release,
+    },
   },
 }) => {
   const [data, setData] = useState({
     loading: true,
     video: [],
     credits: [],
-    collection: [],
     reviews: [],
-    videoError: null,
-    creditsError: null,
-    collectionError: null,
-    reviewsError: null,
+    detail: {},
+    isTV,
     id,
     title,
     posterUrl,
@@ -27,20 +33,24 @@ export default ({
     release,
   });
   const getData = async () => {
-    const [video, videoError] = await movieApi.video(id);
-    const [credits, creditsError] = await movieApi.credits(id);
-    const [collection, collectionError] = await movieApi.collection(id);
-    const [reviews, reviewsError] = await movieApi.reviews(id);
+    const [video, videoError] = !isTV
+      ? await movieApi.video(id)
+      : await tvApi.video(id);
+    const [credits, creditsError] = !isTV
+      ? await movieApi.credits(id)
+      : await tvApi.credits(id);
+    const [reviews, reviewsError] = !isTV
+      ? await movieApi.reviews(id)
+      : await tvApi.reviews(id);
+    const [detail, detailError] = !isTV
+      ? await movieApi.detail(id)
+      : await tvApi.detail(id);
+
     setData({
       loading: false,
       video,
       credits,
-      collection,
       reviews,
-      videoError,
-      creditsError,
-      collectionError,
-      reviewsError,
       id,
       title,
       posterUrl,
@@ -48,6 +58,7 @@ export default ({
       vote,
       overview,
       release,
+      detail,
     });
   };
 

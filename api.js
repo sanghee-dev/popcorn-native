@@ -38,7 +38,6 @@ export const movieApi = {
   discover: () => fetchData(`/discover/movie`),
   video: (id) => fetchData(`/movie/${id}/videos`),
   credits: (id) => fetchData(`/movie/${id}/credits`),
-  collection: (id) => fetchData(`/collection/${id}`),
   reviews: (id) => fetchData(`/movie/${id}/reviews`),
   trending: (media_type = "movie", time_window = "week") =>
     fetchData(`/trending/${media_type}/${time_window}`),
@@ -59,7 +58,6 @@ export const tvApi = {
     }),
   video: (id) => fetchData(`/tv/${id}/videos`),
   credits: (id) => fetchData(`/tv/${id}/credits`),
-  seasons: (id) => fetchData(`/tv/${id}/credits`),
   reviews: (id, season_number) =>
     fetchData(`/tv/${id}/season/${season_number}`),
   trending: (media_type = "tv", time_window = "week") =>

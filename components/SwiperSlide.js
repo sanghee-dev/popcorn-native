@@ -20,7 +20,7 @@ const Movie = styled.View`
 `;
 const BackdroprContainer = styled.View`
   width: 100%;
-  height: ${WIDTH / 2.5}px;
+  height: ${WIDTH / 2.1}px;
   border-radius: 8px;
   overflow: hidden;
   margin: 8px 0;
@@ -41,6 +41,7 @@ const LikeButton = styled.Text`
 `;
 
 const SwiperSlide = ({
+  isTV,
   id,
   title,
   posterUrl,
@@ -70,6 +71,7 @@ const SwiperSlide = ({
         <TouchableOpacity
           onPress={() =>
             navigation.navigate("Detail", {
+              isTV,
               id,
               title,
               posterUrl,
@@ -100,7 +102,7 @@ const SwiperSlide = ({
         </TouchableOpacity>
 
         <Info>
-          <Text style={StyleSheet.Subtitle} numberOfLines={3}>
+          <Text style={StyleSheet.Subtitle} numberOfLines={2}>
             {overview}
           </Text>
         </Info>

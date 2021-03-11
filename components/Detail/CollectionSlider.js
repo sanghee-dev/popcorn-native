@@ -28,27 +28,30 @@ const PosterContainer = styled.View`
   border-radius: 8px;
   overflow: hidden;
 `;
-const ActorName = styled.Text`
+const AirDate = styled.Text`
   color: "rgb(95, 95, 95)";
 `;
 const Title = styled.Text``;
 
-const CreditSlider = ({ creditList }) => {
+const CollectionSlider = ({ collectionList }) => {
   return (
     <Container>
-      <Title style={StyleSheet.Title}>Credits</Title>
+      <Title style={StyleSheet.Title}>Collection</Title>
       <SwiperContainer>
         <Swiper controlsEnabled={false} loop timeout={4}>
-          {creditList.map((credit) => (
-            <CreditContainer key={credit.id} style={StyleSheet.BorderRadius}>
+          {collectionList?.map((collection) => (
+            <CreditContainer
+              key={collection.id}
+              style={StyleSheet.BorderRadius}
+            >
               <Info>
-                <Title style={StyleSheet.Subtitle}>{credit.character}</Title>
-                <ActorName style={StyleSheet.Subtitle}>
-                  {credit.original_name}
-                </ActorName>
+                <Title style={StyleSheet.Subtitle}>{collection.name}</Title>
+                <AirDate style={StyleSheet.Subtitle}>
+                  {collection.air_date.substring(2).replaceAll("-", ".")}
+                </AirDate>
               </Info>
               <PosterContainer>
-                <Poster posterUrl={credit.profile_path} />
+                <Poster posterUrl={collection.poster_path} />
               </PosterContainer>
             </CreditContainer>
           ))}
@@ -58,4 +61,4 @@ const CreditSlider = ({ creditList }) => {
   );
 };
 
-export default CreditSlider;
+export default CollectionSlider;

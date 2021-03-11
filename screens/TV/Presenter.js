@@ -38,10 +38,10 @@ export default ({
         <ActivityIndicator color="rgb(0, 255, 84)" />
       ) : (
         <>
-          <SwiperSlider movieList={airingToday} />
-          <Slider movieList={onTheAir} title="On The Air Shows" />
-          <Slider movieList={popular} title="Popular Shows" />
-          <Slider movieList={topRated} title="Top Rated Shows" />
+          <SwiperSlider movieList={airingToday} isTV={true} />
+          <Slider movieList={onTheAir} title="On The Air Shows" isTV={true} />
+          <Slider movieList={popular} title="Popular Shows" isTV={true} />
+          <Slider movieList={topRated} title="Top Rated Shows" isTV={true} />
         </>
       )}
     </Container>

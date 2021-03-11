@@ -3,33 +3,20 @@ import styled from "styled-components/native";
 import StyleSheet from "../../components/StyleSheet";
 import { Dimensions, ActivityIndicator } from "react-native";
 import PropTypes from "prop-types";
-import Poster from "../../components/Poster";
-import Vote from "../../components/Vote";
-import NoPoster from "../../components/NoPoster";
 import VideoSlider from "../../components/Detail/VideoSlider";
 import CreditSlider from "../../components/Detail/CreditSlider";
+import CollectionSlider from "../../components/Detail/CollectionSlider";
+import Info from "../../components/Detail/Info";
 
 const { width: WIDTH, height: HEIGHT } = Dimensions.get("window");
 const Container = styled.ScrollView``;
 const Title = styled.Text``;
-const PosterContainer = styled.View`
-  width: ${WIDTH / 3}px;
-  height: ${WIDTH / 2}px;
-  border-radius: 8px;
-  overflow: hidden;
-  margin-bottom: 16px;
-`;
 
 const Presenter = ({
   loading,
   video,
   credits,
-  collection,
   reviews,
-  videoError,
-  creditsError,
-  collectionError,
-  reviewsError,
   id,
   title,
   posterUrl,
@@ -37,8 +24,9 @@ const Presenter = ({
   vote,
   overview,
   release,
+  detail,
 }) => {
-  console.log(credits);
+  console.log(detail);
 
   return (
     <Container
@@ -53,18 +41,19 @@ const Presenter = ({
         <ActivityIndicator color="rgb(0, 255, 84)" />
       ) : (
         <>
-          <VideoSlider videoList={video} />
-          <CreditSlider creditList={credits.cast} />
+          {video && <VideoSlider videoList={video} />}
 
-          <Vote vote={vote} fontSize={20} />
+          <Info
+            title={title}
+            vote={vote}
+            overview={overview}
+            posterUrl={posterUrl}
+          />
 
-          <PosterContainer>
-            {posterUrl?.length > 0 ? (
-              <Poster posterUrl={posterUrl} />
-            ) : (
-              <NoPoster id={id} />
-            )}
-          </PosterContainer>
+          {credits && <CreditSlider creditList={credits.cast} />}
+          {detail.seasons && (
+            <CollectionSlider collectionList={detail.seasons} />
+          )}
         </>
       )}
     </Container>

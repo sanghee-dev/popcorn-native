@@ -34,6 +34,7 @@ const LikeButton = styled.Text`
 `;
 
 const Slide = ({
+  isTV,
   title,
   id,
   posterUrl,
@@ -58,6 +59,7 @@ const Slide = ({
               vote,
               overview,
               release,
+              isTV,
             })
           }
         >

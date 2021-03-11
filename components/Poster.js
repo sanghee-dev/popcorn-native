@@ -12,6 +12,6 @@ const Poster = ({ posterUrl }) => {
   return <Image resizeMode="cover" source={{ uri: imageApi(posterUrl) }} />;
 };
 
-Poster.propTypes = { posterUrl: PropTypes.string.isRequired };
+Poster.propTypes = { posterUrl: PropTypes.string };
 
 export default Poster;

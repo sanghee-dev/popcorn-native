@@ -10,16 +10,17 @@ const Container = styled.View`
 `;
 const SwiperContainer = styled.View`
   width: 100%;
-  height: ${WIDTH / 2 + 60}px;
+  height: ${WIDTH / 1.5}px;
 `;
 
-const SwiperSlider = ({ movieList }) => {
+const SwiperSlider = ({ isTV = false, movieList }) => {
   return (
     <Container>
       <SwiperContainer>
         <Swiper controlsEnabled={false} loop timeout={4}>
           {movieList.map((movie) => (
             <SwiperSlide
+              isTV={isTV}
               key={movie.id}
               id={movie.id}
               title={movie.title || movie.name}
