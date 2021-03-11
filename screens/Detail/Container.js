@@ -5,14 +5,19 @@ import { movieApi } from "../../api";
 export default ({
   navigation: { setOptions },
   route: {
-    state,
     params: { id, title, posterUrl, backdropUrl, vote, overview, release },
   },
 }) => {
   const [data, setData] = useState({
     loading: true,
-    nowPlaying: [],
-    nowPlayingError: null,
+    video: [],
+    credits: [],
+    collection: [],
+    reviews: [],
+    videoError: null,
+    creditsError: null,
+    collectionError: null,
+    reviewsError: null,
     id,
     title,
     posterUrl,
@@ -22,11 +27,20 @@ export default ({
     release,
   });
   const getData = async () => {
-    const [nowPlaying, nowPlayingError] = await movieApi.nowPlaying();
+    const [video, videoError] = await movieApi.video(id);
+    const [credits, creditsError] = await movieApi.credits(id);
+    const [collection, collectionError] = await movieApi.collection(id);
+    const [reviews, reviewsError] = await movieApi.reviews(id);
     setData({
       loading: false,
-      nowPlaying,
-      nowPlayingError,
+      video,
+      credits,
+      collection,
+      reviews,
+      videoError,
+      creditsError,
+      collectionError,
+      reviewsError,
       id,
       title,
       posterUrl,

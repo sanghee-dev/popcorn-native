@@ -21,7 +21,14 @@ const PosterContainer = styled.View`
 
 const Presenter = ({
   loading,
-  nowPlaying,
+  video,
+  credits,
+  collection,
+  reviews,
+  videoError,
+  creditsError,
+  collectionError,
+  reviewsError,
   id,
   title,
   posterUrl,
@@ -30,6 +37,8 @@ const Presenter = ({
   overview,
   release,
 }) => {
+  console.log(video, credits, collection, reviews);
+
   return (
     <Container
       style={StyleSheet.Container}
