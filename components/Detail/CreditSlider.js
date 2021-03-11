@@ -36,6 +36,7 @@ const Title = styled.Text``;
 const CreditSlider = ({ creditList }) => {
   return (
     <Container>
+      <Title style={StyleSheet.Title}>Credits</Title>
       <SwiperContainer>
         <Swiper controlsEnabled={false} loop timeout={4}>
           {creditList.map((credit) => (
