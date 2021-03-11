@@ -2,46 +2,33 @@ import React from "react";
 import styled from "styled-components/native";
 import StyleSheet from "../StyleSheet";
 import { Dimensions } from "react-native";
-import Vote from "../Vote";
-import Poster from "../Poster";
 
 const { width: WIDTH, height: HEIGHT } = Dimensions.get("window");
 const Container = styled.View`
   margin-bottom: 32px;
-  height: ${WIDTH / 2}px;
+  width: ${WIDTH / 2 - 32}px;
+  height: ${WIDTH / 2 - 32}px;
   flex-direction: row;
-`;
-const PosterContainer = styled.View`
-  width: ${WIDTH / 3}px;
-  height: ${WIDTH / 2}px;
-  border-radius: 8px;
-  overflow: hidden;
-  margin-right: 16px;
+  margin-right: 32px;
 `;
 const InfoContainer = styled.View`
-  width: ${(WIDTH / 3) * 2 - 50}px;
-`;
-const VoteContainer = styled.View`
-  margin: 4px 0;
+  width: ${WIDTH / 2 - 32}px;
 `;
 const Title = styled.Text``;
+const Overview = styled.Text`
+  margin-top: 8px;
+`;
 
-const Info = ({ title, vote, overview, posterUrl }) => {
+const Info = ({ title, overview }) => {
   return (
     <Container>
-      <PosterContainer>
-        <Poster posterUrl={posterUrl} />
-      </PosterContainer>
       <InfoContainer>
         <Title style={StyleSheet.Title} numberOfLines={2}>
           {title}
         </Title>
-        <VoteContainer>
-          <Vote vote={vote} />
-        </VoteContainer>
-        <Title style={StyleSheet.Subtitle} numberOfLines={7}>
+        <Overview style={StyleSheet.Subtitle} numberOfLines={6}>
           {overview}
-        </Title>
+        </Overview>
       </InfoContainer>
     </Container>
   );

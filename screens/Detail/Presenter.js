@@ -7,10 +7,15 @@ import VideoSlider from "../../components/Detail/VideoSlider";
 import CreditSlider from "../../components/Detail/CreditSlider";
 import CollectionSlider from "../../components/Detail/CollectionSlider";
 import Info from "../../components/Detail/Info";
+import ReviewSlider from "../../components/Detail/ReviewSlider";
+import CompanySlider from "../../components/Detail/CompanySlider";
 
 const { width: WIDTH, height: HEIGHT } = Dimensions.get("window");
 const Container = styled.ScrollView``;
 const Title = styled.Text``;
+const RowContainer = styled.View`
+  flex-direction: row;
+`;
 
 const Presenter = ({
   loading,
@@ -43,17 +48,20 @@ const Presenter = ({
         <>
           {video && <VideoSlider videoList={video} />}
 
-          <Info
-            title={title}
-            vote={vote}
-            overview={overview}
-            posterUrl={posterUrl}
-          />
+          <RowContainer>
+            <Info title={title} overview={overview} />
+            {detail.production_companies && (
+              <CompanySlider companies={detail.production_companies} />
+            )}
+          </RowContainer>
 
           {credits && <CreditSlider creditList={credits.cast} />}
           {detail.seasons && (
             <CollectionSlider collectionList={detail.seasons} />
           )}
+          <RowContainer>
+            {reviews && <ReviewSlider reviews={reviews} />}
+          </RowContainer>
         </>
       )}
     </Container>

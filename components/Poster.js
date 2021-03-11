@@ -8,8 +8,10 @@ const Image = styled.Image`
   height: 100%;
 `;
 
-const Poster = ({ posterUrl }) => {
-  return <Image resizeMode="cover" source={{ uri: imageApi(posterUrl) }} />;
+const Poster = ({ posterUrl, resizeMode = "cover" }) => {
+  return (
+    <Image resizeMode={resizeMode} source={{ uri: imageApi(posterUrl) }} />
+  );
 };
 
 Poster.propTypes = { posterUrl: PropTypes.string };
