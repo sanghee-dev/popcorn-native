@@ -3,11 +3,11 @@ import styled from "styled-components/native";
 import StyleSheet from "../../components/StyleSheet";
 import { Dimensions, ActivityIndicator } from "react-native";
 import PropTypes from "prop-types";
-import Slider from "../../components/Detail/Slider";
 import Poster from "../../components/Poster";
 import Vote from "../../components/Vote";
 import NoPoster from "../../components/NoPoster";
 import VideoSlider from "../../components/Detail/VideoSlider";
+import CreditSlider from "../../components/Detail/CreditSlider";
 
 const { width: WIDTH, height: HEIGHT } = Dimensions.get("window");
 const Container = styled.ScrollView``;
@@ -38,7 +38,7 @@ const Presenter = ({
   overview,
   release,
 }) => {
-  console.log(video, credits, collection, reviews);
+  console.log(credits);
 
   return (
     <Container
@@ -54,6 +54,7 @@ const Presenter = ({
       ) : (
         <>
           <VideoSlider videoList={video} />
+          <CreditSlider id={credits.id} creditList={credits.cast} />
 
           <Vote vote={vote} />
           <PosterContainer>
@@ -63,7 +64,6 @@ const Presenter = ({
               <NoPoster id={id} />
             )}
           </PosterContainer>
-          {/* <Slider movieList={nowPlaying} title="Now Playing Movies" /> */}
         </>
       )}
     </Container>

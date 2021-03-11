@@ -18,9 +18,8 @@ const VideoContainer = styled.View`
   height: ${WIDTH / 1.7}px;
   overflow: hidden;
 `;
-const Title = styled.Text``;
 
-const Slider = ({ videoList }) => {
+const VideoSlider = ({ videoList }) => {
   return (
     <Container>
       <SwiperContainer>
@@ -33,6 +32,8 @@ const Slider = ({ videoList }) => {
                   frameBorder="0"
                   allow="autoplay; encrypted-media"
                   allowFullScreen
+                  title="video"
+                  style={{ height: "100%" }}
                 />
               ) : (
                 <WebView
@@ -50,4 +51,4 @@ const Slider = ({ videoList }) => {
   );
 };
 
-export default Slider;
+export default VideoSlider;
