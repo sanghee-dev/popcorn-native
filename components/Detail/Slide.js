@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 import styled from "styled-components/native";
-import StyleSheet from "./StyleSheet";
+import StyleSheet from "../StyleSheet";
 import { Ionicons } from "@expo/vector-icons";
 import PropTypes from "prop-types";
 import { Dimensions } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { TouchableOpacity } from "react-native";
-import Poster from "./Poster";
-import Vote from "./Vote";
-import NoPoster from "./NoPoster";
+import Poster from "../Poster";
+import Vote from "../Vote";
+import NoPoster from "../NoPoster";
 
 const { width: WIDTH, height: HEIGHT } = Dimensions.get("window");
 const Container = styled.View``;

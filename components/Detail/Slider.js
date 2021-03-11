@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components/native";
-import StyleSheet from "./StyleSheet";
+import StyleSheet from "../StyleSheet";
 import Slide from "./Slide";
 
 const Container = styled.View`

@@ -3,10 +3,11 @@ import styled from "styled-components/native";
 import StyleSheet from "../../components/StyleSheet";
 import { Dimensions, ActivityIndicator } from "react-native";
 import PropTypes from "prop-types";
-import Slider from "../../components/Slider";
+import Slider from "../../components/Detail/Slider";
 import Poster from "../../components/Poster";
 import Vote from "../../components/Vote";
 import NoPoster from "../../components/NoPoster";
+import VideoSlider from "../../components/Detail/VideoSlider";
 
 const { width: WIDTH, height: HEIGHT } = Dimensions.get("window");
 const Container = styled.ScrollView``;
@@ -52,7 +53,8 @@ const Presenter = ({
         <ActivityIndicator color="rgb(0, 255, 84)" />
       ) : (
         <>
-          <Title style={StyleSheet.Title}>{title}</Title>
+          <VideoSlider videoList={video} />
+
           <Vote vote={vote} />
           <PosterContainer>
             {posterUrl?.length > 0 ? (
