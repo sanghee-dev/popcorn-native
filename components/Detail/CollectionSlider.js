@@ -11,22 +11,23 @@ const Container = styled.View`
 `;
 const SwiperContainer = styled.View`
   width: 100%;
-  height: ${WIDTH / 3}px;
+  height: ${WIDTH / 2 - 32}px;
 `;
 const CreditContainer = styled.View`
   width: 100%;
-  height: ${WIDTH / 3}px;
+  height: ${WIDTH / 2 - 32}px;
   overflow: hidden;
   flex-direction: row;
 `;
 const Info = styled.View`
-  width: ${(WIDTH / 3) * 2 - 32}px;
+  width: ${WIDTH / 2 - 32}px;
 `;
 const PosterContainer = styled.View`
-  width: ${WIDTH / 3}px;
-  height: ${WIDTH / 3}px;
+  width: ${WIDTH / 2 - 32}px;
+  height: ${WIDTH / 2 - 32}px;
   border-radius: 8px;
   overflow: hidden;
+  margin-left: 32px;
 `;
 const AirDate = styled.Text`
   color: "rgb(95, 95, 95)";
