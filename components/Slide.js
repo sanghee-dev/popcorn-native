@@ -8,7 +8,6 @@ import { useNavigation } from "@react-navigation/native";
 import { TouchableOpacity } from "react-native";
 import Poster from "./Poster";
 import Vote from "./Vote";
-import NoPoster from "./NoPoster";
 
 const { width: WIDTH, height: HEIGHT } = Dimensions.get("window");
 const Container = styled.View``;
@@ -64,11 +63,7 @@ const Slide = ({
           }
         >
           <PosterContainer>
-            {posterUrl?.length > 0 ? (
-              <Poster posterUrl={posterUrl} />
-            ) : (
-              <NoPoster id={id} />
-            )}
+            <Poster posterUrl={posterUrl} id={id} />
           </PosterContainer>
         </TouchableOpacity>
 

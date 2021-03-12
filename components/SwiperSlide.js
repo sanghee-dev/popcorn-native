@@ -8,7 +8,6 @@ import { useNavigation } from "@react-navigation/native";
 import { TouchableOpacity } from "react-native";
 import Backdrop from "./Backdrop";
 import Vote from "./Vote";
-import NoPoster from "./NoPoster";
 
 const { width: WIDTH, height: HEIGHT } = Dimensions.get("window");
 const Container = styled.View`
@@ -83,11 +82,7 @@ const SwiperSlide = ({
           }
         >
           <BackdroprContainer>
-            {backdropUrl?.length > 0 ? (
-              <Backdrop backdropUrl={backdropUrl} />
-            ) : (
-              <NoPoster id={id} />
-            )}
+            <Backdrop backdropUrl={backdropUrl} id={id} />
           </BackdroprContainer>
         </TouchableOpacity>
 
