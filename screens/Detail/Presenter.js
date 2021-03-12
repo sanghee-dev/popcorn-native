@@ -73,7 +73,7 @@ const Presenter = ({
             <CollectionSlider collectionList={detail.seasons} />
           )}
 
-          {reviews && <ReviewSlider reviews={reviews} />}
+          {/* {reviews && <ReviewSlider reviews={reviews} />} */}
 
           {detail.imdb_id && <LinkButton imdb_id={detail.imdb_id} />}
         </>

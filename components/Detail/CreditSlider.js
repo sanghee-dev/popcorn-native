@@ -11,22 +11,24 @@ const Container = styled.View`
 `;
 const SwiperContainer = styled.View`
   width: 100%;
-  height: ${WIDTH / 3}px;
+  height: ${WIDTH / 2 - 32}px;
 `;
 const CreditContainer = styled.View`
   width: 100%;
-  height: ${WIDTH / 3}px;
+  height: ${WIDTH / 2 - 32}px;
   overflow: hidden;
   flex-direction: row;
 `;
-const Info = styled.View`
-  width: ${(WIDTH / 3) * 2 - 32}px;
-`;
 const PosterContainer = styled.View`
-  width: ${WIDTH / 3}px;
-  height: ${WIDTH / 3}px;
+  width: ${WIDTH / 2 - 32}px;
+  height: ${WIDTH / 2 - 32}px;
   border-radius: 8px;
   overflow: hidden;
+  margin-right: 32px;
+`;
+const Info = styled.View`
+  width: ${WIDTH / 2 - 32}px;
+  height: ${WIDTH / 2 - 32}px;
 `;
 const ActorName = styled.Text`
   color: "rgb(95, 95, 95)";
@@ -41,15 +43,15 @@ const CreditSlider = ({ creditList }) => {
         <Swiper controlsEnabled={false} loop timeout={4}>
           {creditList.map((credit) => (
             <CreditContainer key={credit.id} style={StyleSheet.BorderRadius}>
+              <PosterContainer>
+                <Poster posterUrl={credit.profile_path} />
+              </PosterContainer>
               <Info>
                 <Title style={StyleSheet.Subtitle}>{credit.character}</Title>
                 <ActorName style={StyleSheet.Subtitle}>
                   {credit.original_name}
                 </ActorName>
               </Info>
-              <PosterContainer>
-                <Poster posterUrl={credit.profile_path} />
-              </PosterContainer>
             </CreditContainer>
           ))}
         </Swiper>

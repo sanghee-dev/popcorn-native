@@ -9,15 +9,18 @@ const Container = styled.View`
   margin-bottom: 32px;
   justify-content: center;
   border-radius: 26px;
-  background-color: white;
 `;
 const TouchableOpacity = styled.TouchableOpacity`
   align-items: center;
 `;
-const Title = styled.Text``;
+const Title = styled.Text`
+  font-size: 20;
+  line-height: 21;
+`;
 
 const LinkButton = ({ imdb_id }) => {
   const [result, setResult] = useState(null);
+  const [focus, setFocus] = useState(false);
 
   const handleButton = async () => {
     let result = await WebBrowser.openBrowserAsync(
@@ -27,9 +30,24 @@ const LinkButton = ({ imdb_id }) => {
   };
 
   return (
-    <Container>
-      <TouchableOpacity onPress={handleButton} title="IMDb">
-        <Title style={StyleSheet.Title}>IMDb</Title>
+    <Container
+      style={{
+        backgroundColor: focus ? "black" : "white",
+      }}
+    >
+      <TouchableOpacity
+        onPress={() => {
+          setFocus((prev) => !prev);
+          handleButton();
+        }}
+        title="IMDb"
+      >
+        <Title
+          style={StyleSheet.Title}
+          style={{ color: focus ? "white" : "black" }}
+        >
+          IMDb
+        </Title>
       </TouchableOpacity>
     </Container>
   );
