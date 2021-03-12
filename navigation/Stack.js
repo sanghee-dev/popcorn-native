@@ -44,7 +44,7 @@ export default () => {
         headerTintColor: "black",
         headerTitleStyle: {
           fontFamily: "ObjectSans-Regular",
-          fontSize: "20px",
+          fontSize: 20,
           fontWeight: "500",
         },
         headerBackTitleVisible: false,
@@ -67,7 +67,7 @@ export default () => {
               name="arrow-back-outline"
               onPress={() => navigation.goBack(null)}
               style={{
-                fontSize: "24px",
+                fontSize: 24,
                 marginLeft: 16,
               }}
             />

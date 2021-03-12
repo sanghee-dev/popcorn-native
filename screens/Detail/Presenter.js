@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components/native";
 import StyleSheet from "../../components/StyleSheet";
 import { Dimensions, ActivityIndicator, RefreshControl } from "react-native";
@@ -10,6 +10,7 @@ import Info from "../../components/Detail/Info";
 import ReviewSlider from "../../components/Detail/ReviewSlider";
 import CompanySlider from "../../components/Detail/CompanySlider";
 import LinkButton from "../../components/Detail/LinkButton";
+import { movieApi } from "../../api";
 
 const { width: WIDTH, height: HEIGHT } = Dimensions.get("window");
 const Container = styled.ScrollView``;
@@ -31,6 +32,7 @@ const Presenter = ({
   overview,
   release,
   detail,
+  collection,
   refreshFn,
 }) => {
   const [refreshing, setRefreshing] = useState(false);
@@ -39,8 +41,6 @@ const Presenter = ({
     await refreshFn();
     setRefreshing(false);
   };
-
-  console.log(detail);
 
   return (
     <Container
@@ -71,6 +71,9 @@ const Presenter = ({
           {credits && <CreditSlider creditList={credits.cast} />}
           {detail.seasons && (
             <CollectionSlider collectionList={detail.seasons} />
+          )}
+          {collection?.parts && (
+            <CollectionSlider collectionList={collection.parts} />
           )}
 
           {/* {reviews && <ReviewSlider reviews={reviews} />} */}

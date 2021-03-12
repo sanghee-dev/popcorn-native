@@ -32,6 +32,15 @@ export default ({
     overview,
     release,
   });
+
+  const getCollection = async () => {
+    const [detail, detailError] = await movieApi.detail(id);
+    const [collection, collectionError] = await movieApi.collection(
+      detail.belongs_to_collection?.id
+    );
+    return collection;
+  };
+
   const getData = async () => {
     const [video, videoError] = !isTV
       ? await movieApi.video(id)
@@ -45,6 +54,7 @@ export default ({
     const [detail, detailError] = !isTV
       ? await movieApi.detail(id)
       : await tvApi.detail(id);
+    const collection = await getCollection();
 
     setData({
       loading: false,
@@ -59,6 +69,7 @@ export default ({
       overview,
       release,
       detail,
+      collection,
     });
   };
 

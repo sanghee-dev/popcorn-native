@@ -5,16 +5,16 @@ import { movieApi } from "../../api";
 export default () => {
   const [data, setData] = useState({
     loading: true,
-    nowPlaying: [],
-    nowPlayingError: null,
+    discover: [],
+    discoverError: null,
   });
 
   const getData = async () => {
-    const [nowPlaying, nowPlayingError] = await movieApi.nowPlaying();
+    const [discover, discoverError] = await movieApi.discover();
     setData({
       loading: false,
-      nowPlaying,
-      nowPlayingError,
+      discover,
+      discoverError,
     });
   };
 

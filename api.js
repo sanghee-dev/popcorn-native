@@ -39,6 +39,7 @@ export const movieApi = {
   video: (id) => fetchData(`/movie/${id}/videos`),
   credits: (id) => fetchData(`/movie/${id}/credits`),
   reviews: (id) => fetchData(`/movie/${id}/reviews`),
+  collection: (id) => fetchData(`/collection/${id}`),
   trending: (media_type = "movie", time_window = "week") =>
     fetchData(`/trending/${media_type}/${time_window}`),
 };

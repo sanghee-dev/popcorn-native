@@ -46,9 +46,12 @@ const CollectionSlider = ({ collectionList }) => {
               style={StyleSheet.BorderRadius}
             >
               <Info>
-                <Title style={StyleSheet.Subtitle}>{collection.name}</Title>
+                <Title style={StyleSheet.Subtitle}>
+                  {collection.name || collection.original_title}
+                </Title>
                 <AirDate style={StyleSheet.Subtitle}>
-                  {collection.air_date.substring(2).replaceAll("-", ".")}
+                  {collection.air_date?.substring(2).replaceAll("-", ".") ||
+                    collection.release_date?.substring(2).replaceAll("-", ".")}
                 </AirDate>
               </Info>
               <PosterContainer>
