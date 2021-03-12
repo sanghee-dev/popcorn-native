@@ -3,17 +3,18 @@ import styled from "styled-components/native";
 import StyleSheet from "../../components/StyleSheet";
 import { ActivityIndicator, RefreshControl, Dimensions } from "react-native";
 import Poster from "../../components/Poster";
+import Card from "../../components/Like/Card";
 
 const { width: WIDTH, height: HEIGHT } = Dimensions.get("window");
 const Container = styled.ScrollView``;
 const Title = styled.Text``;
-const Card = styled.View`
+const CardContainer = styled.View`
   width: ${WIDTH - 32}px;
   height: ${HEIGHT - 130}px;
   position: absolute;
 `;
 
-export default ({ loading, discover, refreshFn }) => {
+export default ({ loading, data, refreshFn }) => {
   const [refreshing, setRefreshing] = useState(false);
   const onRefresh = async () => {
     setRefreshing(true);
@@ -21,7 +22,7 @@ export default ({ loading, discover, refreshFn }) => {
     setRefreshing(false);
   };
 
-  console.log(discover);
+  console.log(data);
 
   return (
     <Container
@@ -42,16 +43,9 @@ export default ({ loading, discover, refreshFn }) => {
         <ActivityIndicator color="rgb(0, 255, 84)" />
       ) : (
         <>
-          <Card>
-            {discover.reverse().map((movie, index) => {
-              return (
-                <Card key={index} style={StyleSheet.BorderRadius}>
-                  <Poster posterUrl={movie.poster_path} />
-                  <Title style={StyleSheet.Title}>{movie.original_title}</Title>
-                </Card>
-              );
-            })}
-          </Card>
+          <CardContainer>
+            <Card movieList={data} />
+          </CardContainer>
         </>
       )}
     </Container>
