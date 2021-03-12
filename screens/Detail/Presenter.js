@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components/native";
 import StyleSheet from "../../components/StyleSheet";
-import { Dimensions, ActivityIndicator } from "react-native";
+import { Dimensions, ActivityIndicator, RefreshControl } from "react-native";
 import PropTypes from "prop-types";
 import VideoSlider from "../../components/Detail/VideoSlider";
 import CreditSlider from "../../components/Detail/CreditSlider";
@@ -31,13 +31,27 @@ const Presenter = ({
   overview,
   release,
   detail,
+  refreshFn,
 }) => {
+  const [refreshing, setRefreshing] = useState(false);
+  const onRefresh = async () => {
+    setRefreshing(true);
+    await refreshFn();
+    setRefreshing(false);
+  };
+
   console.log(detail);
 
   return (
     <Container
       style={StyleSheet.Container}
-      contentContainerStyle={{ flexGrow: 1, justifyContent: "center" }}
+      refreshControl={
+        <RefreshControl
+          onRefresh={onRefresh}
+          refreshing={refreshing}
+          tintColor="rgb(0, 255, 84)"
+        />
+      }
       contentContainerStyle={{
         flex: loading ? 1 : 0,
         justifyContent: loading ? "center" : "flex-start",

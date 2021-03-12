@@ -71,5 +71,5 @@ export default ({
     return () => (mounted = false);
   }, []);
 
-  return <Presenter {...data} />;
+  return <Presenter {...data} refreshFn={getData} />;
 };
