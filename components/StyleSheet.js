@@ -41,12 +41,14 @@ export default StyleSheet.create({
 
   BorderRadius: {
     borderRadius: 8,
+    overflow: "hidden",
   },
   Border: {
     borderRadius: 8,
     borderStyle: "solid",
     borderColor: "rgb(0, 255, 84)",
     borderWidth: 1,
+    overflow: "hidden",
   },
   Gradient: {
     width: "100%",
