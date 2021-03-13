@@ -57,7 +57,8 @@ const SwiperSlide = ({
       <Movie>
         <Info>
           <Text style={StyleSheet.Title} numberOfLines={1}>
-            {title}
+            {title.substring(0, 30)}
+            {title.length > 30 && "..."}
           </Text>
           {/* <Text style={StyleSheet.Title} numberOfLines={1}>
             {release.substring(2).replaceAll("-", ".")}
