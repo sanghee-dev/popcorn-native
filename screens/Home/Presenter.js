@@ -7,7 +7,15 @@ import Slider from "../../components/Slider";
 const Container = styled.ScrollView``;
 const Title = styled.Text``;
 
-export default ({ loading, nowPlaying, refreshFn }) => {
+export default ({
+  loading,
+  nowPlaying,
+  animated,
+  fantasy,
+  comedy,
+  adventure,
+  refreshFn,
+}) => {
   const [refreshing, setRefreshing] = useState(false);
   const onRefresh = async () => {
     setRefreshing(true);
@@ -35,7 +43,10 @@ export default ({ loading, nowPlaying, refreshFn }) => {
         <ActivityIndicator color="rgb(0, 255, 84)" />
       ) : (
         <>
-          <Slider movieList={nowPlaying} title="Now Playing Movies" />
+          <Slider movieList={animated} title="Animation" />
+          <Slider movieList={fantasy} title="Fantasy" />
+          <Slider movieList={comedy} title="Comedy" />
+          <Slider movieList={adventure} title="Adventure" />
         </>
       )}
     </Container>

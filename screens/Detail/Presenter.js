@@ -42,6 +42,8 @@ const Presenter = ({
     setRefreshing(false);
   };
 
+  console.log(detail);
+
   return (
     <Container
       style={StyleSheet.Container}
@@ -63,7 +65,14 @@ const Presenter = ({
         <>
           {video && <VideoSlider videoList={video} />}
           <InfoContainer>
-            <Info title={title} overview={overview} />
+            <Info
+              title={title}
+              overview={overview}
+              release={release}
+              vote={vote}
+              runtime={detail.runtime}
+              adult={detail.adult}
+            />
             {detail.production_companies && (
               <CompanySlider companies={detail.production_companies} />
             )}

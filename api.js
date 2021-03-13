@@ -65,7 +65,7 @@ export const movieApi = {
     fetchData(`/trending/${media_type}/${time_window}`),
   discover: () => fetchData(`/discover/movie`),
   discoverGenre: (genre, sort = "popularity.desc") =>
-    fetchData(`/discover/movie?with_genres=${genres[genre]}&sort_by=${sort}`),
+    fetchData(`/discover/movie?with_genres=${genre}&sort_by=${sort}`),
 };
 
 export const tvApi = {
@@ -89,7 +89,7 @@ export const tvApi = {
     fetchData(`/trending/${media_type}/${time_window}`),
   discover: () => fetchData(`/discover/tv`),
   discoverGenre: (genre, sort = "popularity.desc") =>
-    fetchData(`/discover/tv?with_genres=${genres[genre]}&sort_by=${sort}`),
+    fetchData(`/discover/tv?with_genres=${genre}&sort_by=${sort}`),
 };
 
 export const imageApi = (path) => `https://image.tmdb.org/t/p/w500${path}`;
