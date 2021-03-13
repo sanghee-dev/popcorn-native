@@ -72,6 +72,7 @@ const Presenter = ({
               vote={vote}
               runtime={detail.runtime}
               adult={detail.adult}
+              tagline={detail.tagline}
             />
             {detail.production_companies && (
               <CompanySlider companies={detail.production_companies} />

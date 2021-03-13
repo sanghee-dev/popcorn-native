@@ -5,6 +5,7 @@ import { Ionicons } from "@expo/vector-icons";
 import { Platform } from "react-native";
 import Tab from "./Tab";
 import Detail from "../screens/Detail";
+import More from "../screens/More";
 
 const Stack = createStackNavigator();
 const Logo = styled.Text`
@@ -16,20 +17,6 @@ const Logo = styled.Text`
     `,
   })};
 `;
-// const BackButton = styled.Text`
-//   font-size: 20px;
-//   margin-left: 16px;
-//   ${Platform.select({
-//     ios: css`
-//       margin-top: 4px;
-//       font-size: 32px;
-//     `,
-//     android: css`
-//       margin-top: 4px;
-//       font-size: 32px;
-//     `,
-//   })};
-// `;
 
 export default () => {
   return (
@@ -62,7 +49,22 @@ export default () => {
         component={Detail}
         options={({ navigation }) => ({
           headerLeft: () => (
-            // <BackButton onPress={() => navigation.goBack(null)}>≪</BackButton>
+            <Ionicons
+              name="arrow-back-outline"
+              onPress={() => navigation.goBack(null)}
+              style={{
+                fontSize: 24,
+                marginLeft: 16,
+              }}
+            />
+          ),
+        })}
+      />
+      <Stack.Screen
+        name="More"
+        component={More}
+        options={({ navigation }) => ({
+          headerLeft: () => (
             <Ionicons
               name="arrow-back-outline"
               onPress={() => navigation.goBack(null)}
