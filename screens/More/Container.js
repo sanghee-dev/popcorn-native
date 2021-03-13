@@ -12,9 +12,11 @@ export default ({
       adult,
       tagline,
       posterUrl,
+      backdropUrl,
     },
   },
 }) => {
+  console.log(backdropUrl);
   return (
     <Presenter
       title={title}
@@ -25,6 +27,7 @@ export default ({
       adult={adult}
       tagline={tagline}
       posterUrl={posterUrl}
+      backdropUrl={backdropUrl}
     />
   );
 };

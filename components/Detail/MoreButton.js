@@ -27,6 +27,7 @@ const MoreButton = ({
   runtime,
   adult,
   posterUrl,
+  backdropUrl,
 }) => {
   const [result, setResult] = useState(null);
   const [focus, setFocus] = useState(false);
@@ -51,6 +52,7 @@ const MoreButton = ({
             runtime,
             adult,
             posterUrl,
+            backdropUrl,
           });
         }}
       >

@@ -32,15 +32,7 @@ const More = styled.Text`
   color: rgb(0, 255, 84);
 `;
 
-const Info = ({
-  title,
-  overview,
-  release,
-  runtime,
-  adult,
-  tagline,
-  posterUrl,
-}) => {
+const Info = ({ title, overview, release, runtime }) => {
   const [more, setMore] = useState(false);
 
   return (

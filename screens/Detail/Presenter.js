@@ -42,8 +42,6 @@ const Presenter = ({
     setRefreshing(false);
   };
 
-  console.log(detail);
-
   return (
     <Container
       style={StyleSheet.Container}
@@ -69,11 +67,7 @@ const Presenter = ({
               title={title}
               overview={overview}
               release={release}
-              vote={vote}
               runtime={detail.runtime}
-              adult={detail.adult}
-              tagline={detail.tagline}
-              posterUrl={posterUrl}
             />
             {detail.production_companies && (
               <CompanySlider companies={detail.production_companies} />
@@ -97,6 +91,7 @@ const Presenter = ({
             runtime={detail.runtime}
             adult={detail.adult}
             posterUrl={posterUrl}
+            backdropUrl={backdropUrl}
           />
           {detail.imdb_id && <LinkButton imdb_id={detail.imdb_id} />}
         </>
