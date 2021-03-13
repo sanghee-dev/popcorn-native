@@ -17,6 +17,9 @@ const Logo = styled.Text`
     `,
   })};
 `;
+const IconContainer = styled.View`
+  flex-direction: row;
+`;
 
 export default () => {
   return (
@@ -65,14 +68,23 @@ export default () => {
         component={More}
         options={({ navigation }) => ({
           headerLeft: () => (
-            <Ionicons
-              name="arrow-back-outline"
-              onPress={() => navigation.goBack(null)}
-              style={{
-                fontSize: 24,
-                marginLeft: 16,
-              }}
-            />
+            <IconContainer>
+              <Ionicons
+                name="arrow-back-outline"
+                onPress={() => navigation.goBack(null)}
+                style={{
+                  fontSize: 24,
+                  marginLeft: 16,
+                }}
+              />
+              <Ionicons
+                name="arrow-back-outline"
+                onPress={() => navigation.goBack(null)}
+                style={{
+                  fontSize: 24,
+                }}
+              />
+            </IconContainer>
           ),
         })}
       />
