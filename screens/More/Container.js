@@ -3,8 +3,28 @@ import Presenter from "./Presenter";
 
 export default ({
   route: {
-    params: { overview, tagline },
+    params: {
+      title,
+      overview,
+      release,
+      vote,
+      runtime,
+      adult,
+      tagline,
+      posterUrl,
+    },
   },
 }) => {
-  return <Presenter overview={overview} tagline={tagline} />;
+  return (
+    <Presenter
+      title={title}
+      overview={overview}
+      release={release}
+      vote={vote}
+      runtime={runtime}
+      adult={adult}
+      tagline={tagline}
+      posterUrl={posterUrl}
+    />
+  );
 };

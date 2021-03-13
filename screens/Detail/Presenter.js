@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import styled from "styled-components/native";
 import StyleSheet from "../../components/StyleSheet";
 import { Dimensions, ActivityIndicator, RefreshControl } from "react-native";
@@ -10,7 +10,7 @@ import Info from "../../components/Detail/Info";
 import ReviewSlider from "../../components/Detail/ReviewSlider";
 import CompanySlider from "../../components/Detail/CompanySlider";
 import LinkButton from "../../components/Detail/LinkButton";
-import { movieApi } from "../../api";
+import MoreButton from "../../components/Detail/MoreButton";
 
 const { width: WIDTH, height: HEIGHT } = Dimensions.get("window");
 const Container = styled.ScrollView``;
@@ -73,6 +73,7 @@ const Presenter = ({
               runtime={detail.runtime}
               adult={detail.adult}
               tagline={detail.tagline}
+              posterUrl={posterUrl}
             />
             {detail.production_companies && (
               <CompanySlider companies={detail.production_companies} />
@@ -88,6 +89,15 @@ const Presenter = ({
 
           {/* {reviews && <ReviewSlider reviews={reviews} />} */}
 
+          <MoreButton
+            title={title}
+            overview={overview}
+            release={release}
+            vote={vote}
+            runtime={detail.runtime}
+            adult={detail.adult}
+            posterUrl={posterUrl}
+          />
           {detail.imdb_id && <LinkButton imdb_id={detail.imdb_id} />}
         </>
       )}

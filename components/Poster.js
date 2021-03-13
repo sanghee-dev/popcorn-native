@@ -11,11 +11,22 @@ const Image = styled.Image`
   height: 100%;
 `;
 
-const Poster = ({ posterUrl, resizeMode = "cover", id = 0 }) => {
+const Poster = ({
+  posterUrl,
+  resizeMode = "cover",
+  id = 0,
+  blurRadius = 0,
+  opacity = 1,
+}) => {
   return (
     <Container>
       {posterUrl ? (
-        <Image resizeMode={resizeMode} source={{ uri: imageApi(posterUrl) }} />
+        <Image
+          resizeMode={resizeMode}
+          source={{ uri: imageApi(posterUrl) }}
+          blurRadius={blurRadius}
+          style={{ opacity: opacity }}
+        />
       ) : (
         <LinearGradient
           style={StyleSheet.Gradient}
