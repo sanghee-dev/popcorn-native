@@ -75,7 +75,7 @@ export default () => {
       getData();
     }
     return () => (mounted = false);
-  }, []);
+  }, [selectedArray]);
 
   return <Presenter {...data} refreshFn={getData} />;
 };

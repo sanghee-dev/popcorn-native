@@ -1,9 +1,7 @@
 import React from "react";
 import styled from "styled-components/native";
 import StyleSheet from "../StyleSheet";
-import { Dimensions } from "react-native";
 
-const { width: WIDTH, height: HEIGHT } = Dimensions.get("window");
 const Container = styled.ScrollView`
   height: 42px;
   flex-direction: row;
@@ -18,12 +16,14 @@ const Button = styled.TouchableOpacity`
 `;
 const Title = styled.Text``;
 
-const onPress = (genre, selectedArray) => {
-  console.log(genre);
+const onPress = (genre, selectedArray, setSelectedArray) => {
   if (!selectedArray.includes(genre)) {
-    console.log("!includes");
-    selectedArray.push(genre);
-    selectedArray.splice(0, 1);
+    setSelectedArray((prev) => {
+      const newSelectedArray = [...prev];
+      newSelectedArray.unshift(genre);
+      newSelectedArray.pop();
+      return newSelectedArray;
+    });
   }
 };
 
@@ -38,7 +38,7 @@ const Filter = ({ selectedArray, setSelectedArray, genres }) => {
               ? "rgb(0, 255, 84)"
               : "transparent",
           }}
-          onPress={() => onPress(genre, selectedArray)}
+          onPress={() => onPress(genre, selectedArray, setSelectedArray)}
         >
           <Title style={StyleSheet.Text}>{genre}</Title>
         </Button>

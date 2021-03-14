@@ -46,7 +46,7 @@ export default ({
       {loading ? (
         <ActivityIndicator color="rgb(0, 255, 84)" />
       ) : (
-        <Container>
+        <ScrollView>
           <Filter
             selectedArray={selectedArray}
             setSelectedArray={setSelectedArray}
@@ -58,7 +58,7 @@ export default ({
             <Slider movieList={thirdGenre} title={selectedArray[2]} />
             <Slider movieList={fourthGenre} title={selectedArray[3]} />
           </ScrollView>
-        </Container>
+        </ScrollView>
       )}
     </Container>
   );
