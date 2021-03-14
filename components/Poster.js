@@ -5,7 +5,10 @@ import PropTypes from "prop-types";
 import { imageApi } from "../api";
 import { LinearGradient } from "expo-linear-gradient";
 
-const Container = styled.View``;
+const Container = styled.View`
+  width: 100%;
+  height: 100%;
+`;
 const Image = styled.Image`
   width: 100%;
   height: 100%;

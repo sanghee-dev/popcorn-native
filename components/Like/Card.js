@@ -13,7 +13,7 @@ const Title = styled.Text``;
 const Card = ({ movieList }) => {
   return (
     <Container>
-      {movieList.reverse().map((movie, index) => {
+      {movieList?.reverse().map((movie, index) => {
         return (
           <Card key={index} style={StyleSheet.BorderRadius}>
             <Poster posterUrl={movie.poster_path} />
@@ -26,6 +26,6 @@ const Card = ({ movieList }) => {
   );
 };
 
-Card.propTypes = { movieList: PropTypes.array.isRequired };
+Card.propTypes = { movieList: PropTypes.array };
 
 export default Card;

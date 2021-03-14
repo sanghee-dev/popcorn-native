@@ -1,11 +1,13 @@
 import React from "react";
 import styled from "styled-components/native";
 import StyleSheet from "../StyleSheet";
+import { Dimensions } from "react-native";
 
+const { width: WIDTH, height: HEIGHT } = Dimensions.get("window");
 const Container = styled.ScrollView`
-  width: 100%;
-  height: 60px;
+  height: 42px;
   flex-direction: row;
+  margin-bottom: 32px;
 `;
 const Button = styled.TouchableOpacity`
   height: 24px;
@@ -16,26 +18,27 @@ const Button = styled.TouchableOpacity`
 `;
 const Title = styled.Text``;
 
-// {
-//   16: "animated",
-//   14: "fantasy",
-//   35: "comedy",
-//   12: "adventure",
-// }
+const onPress = (genre, selectedArray) => {
+  console.log(genre);
+  if (!selectedArray.includes(genre)) {
+    console.log("!includes");
+    selectedArray.push(genre);
+    selectedArray.splice(0, 1);
+  }
+};
 
-const Filter = ({ selectedGenre, setSelectedGenre, genres }) => {
-  console.log(genres);
-
+const Filter = ({ selectedArray, setSelectedArray, genres }) => {
   return (
-    <Container horizontal={true}>
-      {Object.values(genres).map((genre) => (
+    <Container horizontal={true} showsVerticalScrollIndicator={true}>
+      {Object.keys(genres).map((genre) => (
         <Button
           key={genre}
           style={{
-            backgroundColor: Object.values(selectedGenre).includes(genre)
+            backgroundColor: selectedArray.includes(genre)
               ? "rgb(0, 255, 84)"
               : "transparent",
           }}
+          onPress={() => onPress(genre, selectedArray)}
         >
           <Title style={StyleSheet.Text}>{genre}</Title>
         </Button>

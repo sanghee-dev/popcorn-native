@@ -3,25 +3,25 @@ import Presenter from "./Presenter";
 import { movieApi } from "../../api";
 
 const genres = {
-  12: "adventure",
-  14: "fantasy",
-  16: "animated",
-  18: "drama",
-  27: "horror",
-  28: "action",
-  35: "comedy",
-  36: "history",
-  37: "western",
-  53: "thriller",
-  80: "crime",
-  99: "documentary",
-  878: "sciFi",
-  9648: "mystery",
-  10402: "music",
-  10749: "romance",
-  10751: "family",
-  10752: "war",
-  10770: "TVMovie",
+  adventure: 12,
+  fantasy: 14,
+  animated: 16,
+  drama: 18,
+  horror: 27,
+  action: 28,
+  comedy: 35,
+  history: 36,
+  western: 37,
+  thriller: 53,
+  crime: 80,
+  documentary: 99,
+  sciFi: 878,
+  mystery: 9648,
+  music: 10402,
+  romance: 10749,
+  family: 10751,
+  war: 10752,
+  TVMovie: 10770,
 };
 
 export default () => {
@@ -30,26 +30,26 @@ export default () => {
     nowPlaying: [],
     nowPlayingError: null,
   });
-  const [selectedGenre, setSelectedGenre] = useState({
-    12: "adventure",
-    14: "fantasy",
-    16: "animated",
-    18: "drama",
-  });
+  const [selectedArray, setSelectedArray] = useState([
+    "adventure",
+    "fantasy",
+    "animated",
+    "drama",
+  ]);
 
   const getData = async () => {
     const [nowPlaying, nowPlayingError] = await movieApi.nowPlaying();
     const [firstGenre, firstGenreError] = await movieApi.discoverGenre(
-      Object.keys(selectedGenre)[0]
+      genres[selectedArray[0]]
     );
     const [secondGenre, secondGenreError] = await movieApi.discoverGenre(
-      Object.keys(selectedGenre)[1]
+      genres[selectedArray[1]]
     );
     const [thirdGenre, thirdGenreError] = await movieApi.discoverGenre(
-      Object.keys(selectedGenre)[2]
+      genres[selectedArray[2]]
     );
     const [fourthGenre, fourthGenreError] = await movieApi.discoverGenre(
-      Object.keys(selectedGenre)[3]
+      genres[selectedArray[3]]
     );
     setData({
       loading: false,
@@ -63,8 +63,8 @@ export default () => {
       secondGenreError,
       thirdGenreError,
       fourthGenreError,
-      selectedGenre,
-      setSelectedGenre,
+      selectedArray,
+      setSelectedArray,
       genres,
     });
   };

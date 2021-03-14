@@ -5,7 +5,8 @@ import { ActivityIndicator, RefreshControl } from "react-native";
 import Slider from "../../components/Slider";
 import Filter from "../../components/Home/Filter";
 
-const Container = styled.ScrollView``;
+const Container = styled.View``;
+const ScrollView = styled.ScrollView``;
 const Title = styled.Text``;
 
 export default ({
@@ -15,8 +16,8 @@ export default ({
   thirdGenre,
   fourthGenre,
   refreshFn,
-  selectedGenre,
-  setSelectedGenre,
+  selectedArray,
+  setSelectedArray,
   genres,
 }) => {
   const [refreshing, setRefreshing] = useState(false);
@@ -45,29 +46,19 @@ export default ({
       {loading ? (
         <ActivityIndicator color="rgb(0, 255, 84)" />
       ) : (
-        <>
+        <Container>
           <Filter
-            selectedGenre={selectedGenre}
-            setSelectedGenre={setSelectedGenre}
+            selectedArray={selectedArray}
+            setSelectedArray={setSelectedArray}
             genres={genres}
           />
-          <Slider
-            movieList={firstGenre}
-            title={Object.values(selectedGenre)[0]}
-          />
-          <Slider
-            movieList={secondGenre}
-            title={Object.values(selectedGenre)[1]}
-          />
-          <Slider
-            movieList={thirdGenre}
-            title={Object.values(selectedGenre)[2]}
-          />
-          <Slider
-            movieList={fourthGenre}
-            title={Object.values(selectedGenre)[3]}
-          />
-        </>
+          <ScrollView>
+            <Slider movieList={firstGenre} title={selectedArray[0]} />
+            <Slider movieList={secondGenre} title={selectedArray[1]} />
+            <Slider movieList={thirdGenre} title={selectedArray[2]} />
+            <Slider movieList={fourthGenre} title={selectedArray[3]} />
+          </ScrollView>
+        </Container>
       )}
     </Container>
   );

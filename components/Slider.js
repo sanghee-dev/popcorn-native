@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components/native";
 import StyleSheet from "./StyleSheet";
 import Slide from "./Slide";
+import { Platform } from "react-native";
 
 const Container = styled.View`
   margin-bottom: 32px;
@@ -17,7 +18,10 @@ const Slider = ({ isTV = false, movieList, title = "Title" }) => {
   return (
     <Container>
       <Title style={StyleSheet.Title}>{title}</Title>
-      <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
+      <ScrollView
+        horizontal={true}
+        showsHorizontalScrollIndicator={Platform.OS === "web" ? true : false}
+      >
         {movieList.map((movie) => (
           <Slide
             key={movie.id}
