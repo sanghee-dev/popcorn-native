@@ -52,6 +52,17 @@ const Card = ({ mediaList }) => {
     extrapolate: "clamp",
   });
 
+  const secondCardOpacity = position.x.interpolate({
+    inputRange: [-WIDTH, 0, WIDTH],
+    outputRange: [1, 0.2, 1],
+    extrapolate: "clamp",
+  });
+  const secondCardScale = position.x.interpolate({
+    inputRange: [-WIDTH, 0, WIDTH],
+    outputRange: [1, 0.7, 1],
+    extrapolate: "clamp",
+  });
+
   return (
     <Container>
       {mediaList?.map((media, index) => {
@@ -62,12 +73,20 @@ const Card = ({ mediaList }) => {
               ...CardStyles,
               zIndex: -index,
               transform:
-                topIndex === index
+                index === topIndex
                   ? [
                       { rotate: rotationValues },
                       ...position.getTranslateTransform(),
                     ]
+                  : index === topIndex + 1
+                  ? [{ scale: secondCardScale }]
                   : [],
+              opacity:
+                index === topIndex
+                  ? 1
+                  : index === topIndex + 1
+                  ? secondCardOpacity
+                  : 0,
             }}
             {...panResponder.panHandlers}
           >
