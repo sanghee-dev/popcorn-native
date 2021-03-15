@@ -13,14 +13,25 @@ const Title = styled.Text``;
 const CardView = styled.View`
   width: 100%;
   height: 100%;
+  border-radius: 8px;
+  overflow: hidden;
 `;
 
+const CardStyles = {
+  width: "100%",
+  height: "100%",
+  borderRadius: 16,
+  position: "absolute",
+  overflow: "hidden",
+};
+
 const Card = ({ mediaList }) => {
+  const position = new Animated.ValueXY();
+
   const panResponder = PanResponder.create({
     onStartShouldSetPanResponder: () => true,
     onPanResponderMove: (evt, { dx, dy }) => {
-      console.log(evt);
-      console.log(dx, dy);
+      position.setValue({ x: dx, y: dy });
     },
   });
 
@@ -28,13 +39,16 @@ const Card = ({ mediaList }) => {
     <Container>
       {mediaList?.reverse().map((media) => {
         return (
-          <CardView
+          <Animated.View
             key={media.id}
-            style={StyleSheet.BorderRadius}
+            style={{
+              ...CardStyles,
+              transform: [...position.getTranslateTransform()],
+            }}
             {...panResponder.panHandlers}
           >
             <Poster posterUrl={media.poster_path || media.backdrop_path} />
-          </CardView>
+          </Animated.View>
         );
       })}
     </Container>
