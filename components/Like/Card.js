@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components/native";
 import StyleSheet from "../../components/StyleSheet";
+import { Animated, PanResponder } from "react-native";
 import PropTypes from "prop-types";
 import Poster from "../Poster";
 
@@ -9,23 +10,27 @@ const Container = styled.View`
   height: 100%;
 `;
 const Title = styled.Text``;
+const CardView = styled.View`
+  width: 100%;
+  height: 100%;
+`;
 
-const Card = ({ movieList }) => {
+const Card = ({ mediaList }) => {
+  console.log(mediaList);
+
   return (
     <Container>
-      {movieList?.reverse().map((movie, index) => {
+      {mediaList?.reverse().map((media) => {
         return (
-          <Card key={index} style={StyleSheet.BorderRadius}>
-            <Poster posterUrl={movie.poster_path} />
-
-            <Title style={StyleSheet.Title}>{movie.original_title}</Title>
-          </Card>
+          <CardView key={media.id} style={StyleSheet.BorderRadius}>
+            <Poster posterUrl={media.poster_path || media.backdrop_path} />
+          </CardView>
         );
       })}
     </Container>
   );
 };
 
-Card.propTypes = { movieList: PropTypes.array };
+Card.propTypes = { mediaList: PropTypes.array };
 
 export default Card;

@@ -6,7 +6,9 @@ import Poster from "../../components/Poster";
 import Card from "../../components/Like/Card";
 
 const { width: WIDTH, height: HEIGHT } = Dimensions.get("window");
-const Container = styled.ScrollView``;
+const Container = styled.View`
+  align-items: center;
+`;
 const Title = styled.Text``;
 const CardContainer = styled.View`
   width: ${WIDTH - 32}px;
@@ -14,15 +16,13 @@ const CardContainer = styled.View`
   position: absolute;
 `;
 
-export default ({ loading, data, refreshFn }) => {
+export default ({ loading, movieTrend, tvTrend, refreshFn }) => {
   const [refreshing, setRefreshing] = useState(false);
   const onRefresh = async () => {
     setRefreshing(true);
     await refreshFn();
     setRefreshing(false);
   };
-
-  console.log(data);
 
   return (
     <Container
@@ -44,7 +44,11 @@ export default ({ loading, data, refreshFn }) => {
       ) : (
         <>
           <CardContainer>
-            <Card movieList={data} />
+            <Card
+              mediaList={movieTrend
+                .map((element, index) => [element, tvTrend[index]])
+                .flat()}
+            />
           </CardContainer>
         </>
       )}

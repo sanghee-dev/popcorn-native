@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Presenter from "./Presenter";
-import { movieApi } from "../../api";
+import { movieApi, tvApi } from "../../api";
 
 export default () => {
   const [data, setData] = useState({
@@ -10,11 +10,15 @@ export default () => {
   });
 
   const getData = async () => {
-    const [data, dataError] = await movieApi.trending();
+    const [movieTrend, movieTrendError] = await movieApi.trending();
+    const [tvTrend, tvTrendError] = await tvApi.trending();
+
     setData({
       loading: false,
-      data,
-      dataError,
+      movieTrend,
+      movieTrendError,
+      tvTrend,
+      tvTrendError,
     });
   };
 
