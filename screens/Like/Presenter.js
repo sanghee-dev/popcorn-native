@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import styled from "styled-components/native";
 import StyleSheet from "../../components/StyleSheet";
 import { ActivityIndicator, RefreshControl, Dimensions } from "react-native";
-import Poster from "../../components/Poster";
 import Card from "../../components/Like/Card";
 
 const { width: WIDTH, height: HEIGHT } = Dimensions.get("window");

@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components/native";
 import StyleSheet from "../../components/StyleSheet";
-import { Animated, PanResponder } from "react-native";
+import { Animated, PanResponder, Dimensions } from "react-native";
 import PropTypes from "prop-types";
 import Poster from "../Poster";
 
+const { width: WIDTH, height: HEIGHT } = Dimensions.get("window");
 const Container = styled.View`
   width: 100%;
   height: 100%;
@@ -26,8 +27,9 @@ const CardStyles = {
 };
 
 const Card = ({ mediaList }) => {
-  const position = new Animated.ValueXY();
+  const [topIndex, setTopIndex] = useState(0);
 
+  const position = new Animated.ValueXY();
   const panResponder = PanResponder.create({
     onStartShouldSetPanResponder: () => true,
     onPanResponderMove: (evt, { dx, dy }) => {
@@ -44,20 +46,35 @@ const Card = ({ mediaList }) => {
     },
   });
 
+  const rotationValues = position.x.interpolate({
+    inputRange: [-WIDTH, 0, WIDTH],
+    outputRange: [`-${WIDTH / 50}deg`, `0deg`, `${WIDTH / 50}deg`],
+    extrapolate: "clamp",
+  });
+
   return (
     <Container>
-      {mediaList?.reverse().map((media) => (
-        <Animated.View
-          key={media.id}
-          style={{
-            ...CardStyles,
-            transform: [...position.getTranslateTransform()],
-          }}
-          {...panResponder.panHandlers}
-        >
-          <Poster posterUrl={media.poster_path || media.backdrop_path} />
-        </Animated.View>
-      ))}
+      {mediaList?.map((media, index) => {
+        return (
+          <Animated.View
+            key={media.id}
+            style={{
+              ...CardStyles,
+              zIndex: -index,
+              transform:
+                topIndex === index
+                  ? [
+                      { rotate: rotationValues },
+                      ...position.getTranslateTransform(),
+                    ]
+                  : [],
+            }}
+            {...panResponder.panHandlers}
+          >
+            <Poster posterUrl={media.poster_path || media.backdrop_path} />
+          </Animated.View>
+        );
+      })}
     </Container>
   );
 };
