@@ -33,24 +33,31 @@ const Card = ({ mediaList }) => {
     onPanResponderMove: (evt, { dx, dy }) => {
       position.setValue({ x: dx, y: dy });
     },
+    onPanResponderRelease: () => {
+      Animated.spring(position, {
+        toValue: {
+          x: 0,
+          y: 0,
+        },
+        bounciness: 8,
+      }).start();
+    },
   });
 
   return (
     <Container>
-      {mediaList?.reverse().map((media) => {
-        return (
-          <Animated.View
-            key={media.id}
-            style={{
-              ...CardStyles,
-              transform: [...position.getTranslateTransform()],
-            }}
-            {...panResponder.panHandlers}
-          >
-            <Poster posterUrl={media.poster_path || media.backdrop_path} />
-          </Animated.View>
-        );
-      })}
+      {mediaList?.reverse().map((media) => (
+        <Animated.View
+          key={media.id}
+          style={{
+            ...CardStyles,
+            transform: [...position.getTranslateTransform()],
+          }}
+          {...panResponder.panHandlers}
+        >
+          <Poster posterUrl={media.poster_path || media.backdrop_path} />
+        </Animated.View>
+      ))}
     </Container>
   );
 };
