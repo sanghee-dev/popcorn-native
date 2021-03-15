@@ -16,13 +16,23 @@ const CardView = styled.View`
 `;
 
 const Card = ({ mediaList }) => {
-  console.log(mediaList);
+  const panResponder = PanResponder.create({
+    onStartShouldSetPanResponder: () => true,
+    onPanResponderMove: (evt, { dx, dy }) => {
+      console.log(evt);
+      console.log(dx, dy);
+    },
+  });
 
   return (
     <Container>
       {mediaList?.reverse().map((media) => {
         return (
-          <CardView key={media.id} style={StyleSheet.BorderRadius}>
+          <CardView
+            key={media.id}
+            style={StyleSheet.BorderRadius}
+            {...panResponder.panHandlers}
+          >
             <Poster posterUrl={media.poster_path || media.backdrop_path} />
           </CardView>
         );
