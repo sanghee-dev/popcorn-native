@@ -28,21 +28,23 @@ const CardStyles = {
 
 const Card = ({ mediaList }) => {
   const [topIndex, setTopIndex] = useState(0);
-
   const position = new Animated.ValueXY();
+  const nextCard = () => setTopIndex((prev) => prev + 1);
+
   const panResponder = PanResponder.create({
     onStartShouldSetPanResponder: () => true,
     onPanResponderMove: (evt, { dx, dy }) => {
-      position.setValue({ x: dx, y: dy });
+      position.setValue({ x: dx, y: 0 });
     },
-    onPanResponderRelease: () => {
+    onPanResponderRelease: (evt, { dx }) => {
       Animated.spring(position, {
         toValue: {
-          x: 0,
+          x:
+            dx > WIDTH / 2 ? WIDTH + 100 : dx < -WIDTH / 2 ? -(WIDTH + 100) : 0,
           y: 0,
         },
         bounciness: 8,
-      }).start();
+      }).start(nextCard);
     },
   });
 
@@ -52,11 +54,17 @@ const Card = ({ mediaList }) => {
     extrapolate: "clamp",
   });
 
+  const firstCardOpacity = position.x.interpolate({
+    inputRange: [-WIDTH, -WIDTH / 2 - 100, 0, WIDTH / 2 + 100, WIDTH],
+    outputRange: [0, 1, 1, 1, 0],
+    extrapolate: "clamp",
+  });
   const secondCardOpacity = position.x.interpolate({
     inputRange: [-WIDTH, 0, WIDTH],
     outputRange: [1, 0.2, 1],
     extrapolate: "clamp",
   });
+
   const secondCardScale = position.x.interpolate({
     inputRange: [-WIDTH, 0, WIDTH],
     outputRange: [1, 0.7, 1],
@@ -65,8 +73,8 @@ const Card = ({ mediaList }) => {
 
   return (
     <Container>
-      {mediaList?.map((media, index) => {
-        return (
+      {mediaList?.map((media, index) =>
+        index < topIndex ? null : (
           <Animated.View
             key={media.id}
             style={{
@@ -83,7 +91,7 @@ const Card = ({ mediaList }) => {
                   : [],
               opacity:
                 index === topIndex
-                  ? 1
+                  ? firstCardOpacity
                   : index === topIndex + 1
                   ? secondCardOpacity
                   : 0,
@@ -92,8 +100,8 @@ const Card = ({ mediaList }) => {
           >
             <Poster posterUrl={media.poster_path || media.backdrop_path} />
           </Animated.View>
-        );
-      })}
+        )
+      )}
     </Container>
   );
 };
