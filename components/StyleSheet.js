@@ -2,16 +2,16 @@ import { StyleSheet } from "react-native";
 
 export default StyleSheet.create({
   Green: {
-    color: "rgb(0, 255, 84)",
+    color: "rgb(0, 255, 84)", // #00ff54
   },
   Gray: {
-    color: "rgb(190, 184, 184)",
+    color: "rgb(190, 184, 184)", // #beb8b8
   },
   DarkGray: {
-    color: "rgb(95, 95, 95)",
+    color: "rgb(95, 95, 95)", // #5f5f5f
   },
   LightGray: {
-    color: "rgb(210, 204, 204)",
+    color: "rgb(210, 204, 204)", // #d2cccc
   },
 
   Title: {
