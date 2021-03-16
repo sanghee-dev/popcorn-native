@@ -30,6 +30,10 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/favicon.png",
         "backgroundColor": "#beb8b8"
+      },
+      "defaultConfig": {
+        "versionCode": 2,
+        "versionName": "1.0"
       }
     },
     "androidStatusBar": {
