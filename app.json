@@ -27,13 +27,10 @@
     "android": {
       "package": "co.leeesangheee.popcorn",
       "versionCode": 1,
+      "versionName": "1.0",
       "adaptiveIcon": {
         "foregroundImage": "./assets/favicon.png",
         "backgroundColor": "#beb8b8"
-      },
-      "defaultConfig": {
-        "versionCode": 2,
-        "versionName": "1.0"
       }
     },
     "androidStatusBar": {
