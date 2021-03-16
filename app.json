@@ -1,24 +1,24 @@
 {
   "expo": {
-    "name": "popcorn-native",
-    "slug": "popcorn-native",
+    "name": "Popcorn",
+    "slug": "popcorn",
+    "privacy": "public",
+    "sdkVersion": "36.0.0",
+    "platforms": ["ios", "android", "web"],
     "version": "1.0.0",
     "orientation": "portrait",
+    "icon": "./assets/icon.png",
     "primaryColor": "#00ff54",
     "backgroundColor": "#beb8b8",
-    "icon": "./assets/icon.png",
     "splash": {
       "image": "./assets/splash.png",
-      "resizeMode": "cover",
+      "resizeMode": "contain",
       "backgroundColor": "#beb8b8"
     },
     "updates": {
       "fallbackToCacheTimeout": 0
     },
     "assetBundlePatterns": ["**/*"],
-    "web": {
-      "favicon": "./assets/favicon.png"
-    },
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "co.leeesangheee.popcorn",
@@ -26,12 +26,7 @@
     },
     "android": {
       "package": "co.leeesangheee.popcorn",
-      "versionCode": 1,
-      "versionName": "1.0",
-      "adaptiveIcon": {
-        "foregroundImage": "./assets/favicon.png",
-        "backgroundColor": "#beb8b8"
-      }
+      "versionCode": 1
     },
     "androidStatusBar": {
       "barStyle": "dark-content",
