@@ -4,11 +4,13 @@ import StyleSheet from "../../components/StyleSheet";
 import { Animated, PanResponder, Dimensions } from "react-native";
 import PropTypes from "prop-types";
 import Poster from "../Poster";
+import { Platform } from "react-native";
 
 const { width: WIDTH, height: HEIGHT } = Dimensions.get("window");
 const Container = styled.View`
   width: 100%;
   height: 100%;
+  align-items: center;
 `;
 const Title = styled.Text``;
 const CardView = styled.View`
@@ -19,7 +21,7 @@ const CardView = styled.View`
 `;
 
 const CardStyles = {
-  width: "100%",
+  width: Platform.OS === "web" ? `${HEIGHT / 1.7}px` : "100%",
   height: "100%",
   borderRadius: 16,
   position: "absolute",
