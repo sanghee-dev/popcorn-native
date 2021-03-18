@@ -16,8 +16,8 @@ const Image = styled.Image`
 
 const Poster = ({
   posterUrl,
-  resizeMode = "cover",
   id = 0,
+  resizeMode = "cover",
   blurRadius = 0,
   opacity = 1,
 }) => {
@@ -44,6 +44,12 @@ const Poster = ({
   );
 };
 
-Poster.propTypes = { posterUrl: PropTypes.string, id: PropTypes.number };
+Poster.propTypes = {
+  posterUrl: PropTypes.string,
+  id: PropTypes.number,
+  resizeMode: PropTypes.string,
+  blurRadius: PropTypes.number,
+  opacity: PropTypes.number,
+};
 
 export default Poster;

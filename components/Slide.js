@@ -89,9 +89,14 @@ const Slide = ({
 };
 
 Slide.propTypes = {
+  isTV: PropTypes.bool,
   title: PropTypes.string.isRequired,
+  id: PropTypes.number.isRequired,
   posterUrl: PropTypes.string,
+  backdropUrl: PropTypes.string,
   vote: PropTypes.number.isRequired,
+  overview: PropTypes.string,
+  release: PropTypes.string,
 };
 
 export default Slide;

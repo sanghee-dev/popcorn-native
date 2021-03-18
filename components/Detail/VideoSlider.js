@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components/native";
 import StyleSheet from "../StyleSheet";
+import PropTypes from "prop-types";
 import { Dimensions, Platform } from "react-native";
 import Swiper from "react-native-web-swiper";
 import { WebView } from "react-native-webview";
@@ -50,5 +51,7 @@ const VideoSlider = ({ videoList }) => {
     </Container>
   );
 };
+
+VideoSlider.propTypes = { videoList: PropTypes.array };
 
 export default VideoSlider;

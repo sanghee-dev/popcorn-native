@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components/native";
 import StyleSheet from "../StyleSheet";
+import PropTypes from "prop-types";
 import * as WebBrowser from "expo-web-browser";
 
 const Container = styled.View`
@@ -52,5 +53,7 @@ const LinkButton = ({ imdb_id }) => {
     </Container>
   );
 };
+
+LinkButton.propTypes = { imdb_id: PropTypes.string.isRequired };
 
 export default LinkButton;

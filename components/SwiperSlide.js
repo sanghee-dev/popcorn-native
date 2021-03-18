@@ -11,6 +11,7 @@ import Vote from "./Vote";
 
 const { width: WIDTH, height: HEIGHT } = Dimensions.get("window");
 const Container = styled.View`
+  width: 100%;
   height: 100%;
 `;
 const Movie = styled.View`
@@ -60,14 +61,10 @@ const SwiperSlide = ({
             {title.substring(0, 30)}
             {title.length > 30 && "..."}
           </Text>
-          {/* <Text style={StyleSheet.Title} numberOfLines={1}>
-            {release.substring(2).replaceAll("-", ".")}
-          </Text> */}
           <VoteContainer>
             <Vote vote={vote} />
           </VoteContainer>
         </Info>
-
         <TouchableOpacity
           onPress={() =>
             navigation.navigate("Detail", {
@@ -86,7 +83,6 @@ const SwiperSlide = ({
             <Backdrop backdropUrl={backdropUrl} id={id} />
           </BackdroprContainer>
         </TouchableOpacity>
-
         <TouchableOpacity onPress={() => setLiked((prev) => !prev)}>
           <LikeButton>
             <Ionicons
@@ -96,7 +92,6 @@ const SwiperSlide = ({
             />
           </LikeButton>
         </TouchableOpacity>
-
         <Info>
           <Text style={StyleSheet.Subtitle} numberOfLines={2}>
             {overview}
@@ -108,9 +103,14 @@ const SwiperSlide = ({
 };
 
 SwiperSlide.propTypes = {
+  isTV: PropTypes.bool.isRequired,
+  id: PropTypes.number.isRequired,
   title: PropTypes.string.isRequired,
   posterUrl: PropTypes.string,
-  vote: PropTypes.number.isRequired,
+  backdropUrl: PropTypes.string,
+  vote: PropTypes.number,
+  overview: PropTypes.string,
+  release: PropTypes.string,
 };
 
 export default SwiperSlide;

@@ -15,7 +15,6 @@ const cacheIcons = (fonts) => fonts.map((font) => Font.loadAsync(font));
 const cacheFonts = async () => {
   await Font.loadAsync({
     "ObjectSans-Regular": require("../../assets/fonts/ObjectSans/ObjectSans-Regular.otf"),
-    "ObjectSans-Slanted": require("../../assets/fonts/ObjectSans/ObjectSans-Slanted.otf"),
   });
 };
 

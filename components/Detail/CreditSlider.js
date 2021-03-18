@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components/native";
 import StyleSheet from "../StyleSheet";
+import PropTypes from "prop-types";
 import { Dimensions } from "react-native";
 import Swiper from "react-native-web-swiper";
 import Poster from "../Poster";
@@ -59,5 +60,7 @@ const CreditSlider = ({ creditList }) => {
     </Container>
   );
 };
+
+CreditSlider.propTypes = { creditList: PropTypes.array.isRequired };
 
 export default CreditSlider;

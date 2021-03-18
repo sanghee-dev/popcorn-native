@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components/native";
 import StyleSheet from "../StyleSheet";
-import * as WebBrowser from "expo-web-browser";
+import PropTypes from "prop-types";
 import { useNavigation } from "@react-navigation/native";
 
 const Container = styled.View`
@@ -26,7 +26,6 @@ const MoreButton = ({
   vote,
   runtime,
   adult,
-  posterUrl,
   backdropUrl,
 }) => {
   const [result, setResult] = useState(null);
@@ -51,7 +50,6 @@ const MoreButton = ({
             vote,
             runtime,
             adult,
-            posterUrl,
             backdropUrl,
           });
         }}
@@ -65,6 +63,16 @@ const MoreButton = ({
       </TouchableOpacity>
     </Container>
   );
+};
+
+MoreButton.propTypes = {
+  title: PropTypes.string.isRequired,
+  overview: PropTypes.string,
+  release: PropTypes.string,
+  vote: PropTypes.number,
+  runtime: PropTypes.number,
+  adult: PropTypes.bool,
+  backdropUrl: PropTypes.string,
 };
 
 export default MoreButton;

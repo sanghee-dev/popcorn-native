@@ -1,20 +1,17 @@
 import React, { useState } from "react";
 import styled from "styled-components/native";
 import StyleSheet from "../../components/StyleSheet";
-import { Dimensions, ActivityIndicator, RefreshControl } from "react-native";
+import { ActivityIndicator, RefreshControl } from "react-native";
 import PropTypes from "prop-types";
 import VideoSlider from "../../components/Detail/VideoSlider";
 import CreditSlider from "../../components/Detail/CreditSlider";
 import CollectionSlider from "../../components/Detail/CollectionSlider";
 import Info from "../../components/Detail/Info";
-import ReviewSlider from "../../components/Detail/ReviewSlider";
 import CompanySlider from "../../components/Detail/CompanySlider";
 import LinkButton from "../../components/Detail/LinkButton";
 import MoreButton from "../../components/Detail/MoreButton";
 
-const { width: WIDTH, height: HEIGHT } = Dimensions.get("window");
 const Container = styled.ScrollView``;
-const Title = styled.Text``;
 const InfoContainer = styled.View`
   flex-direction: row;
 `;
@@ -80,9 +77,6 @@ const Presenter = ({
           {collection?.parts && (
             <CollectionSlider collectionList={collection.parts} />
           )}
-
-          {/* {reviews && <ReviewSlider reviews={reviews} />} */}
-
           <MoreButton
             title={title}
             overview={overview}
@@ -90,7 +84,6 @@ const Presenter = ({
             vote={vote}
             runtime={detail.runtime}
             adult={detail.adult}
-            posterUrl={posterUrl}
             backdropUrl={backdropUrl}
           />
           {detail.imdb_id && <LinkButton imdb_id={detail.imdb_id} />}

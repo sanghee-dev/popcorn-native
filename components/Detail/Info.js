@@ -1,15 +1,14 @@
 import React, { useState } from "react";
 import styled from "styled-components/native";
 import StyleSheet from "../StyleSheet";
+import PropTypes from "prop-types";
 import { Dimensions } from "react-native";
-import { LinearGradient } from "expo-linear-gradient";
-import Vote from "../Vote";
 
 const { width: WIDTH, height: HEIGHT } = Dimensions.get("window");
 const Container = styled.View`
   width: ${WIDTH / 2 - 32}px;
-  /* height: ${WIDTH / 2 - 32}px; */
   margin-right: 32px;
+  margin-bottom: 32px;
 `;
 const InfoContainer = styled.View`
   width: ${WIDTH / 2 - 32}px;
@@ -20,15 +19,12 @@ const SubInfo = styled.Text`
 `;
 const Overview = styled.Text``;
 const MoreContainer = styled.TouchableOpacity`
-  width: 80px;
+  width: ${WIDTH / 2 - 32}px;
   height: 22px;
-  position: relative;
-  left: 100px;
-  bottom: 19px;
+  align-items: flex-end;
 `;
 const More = styled.Text`
-  width: 80px;
-  text-align: center;
+  width: 50px;
   color: rgb(0, 255, 84);
 `;
 
@@ -41,36 +37,32 @@ const Info = ({ title, overview, release, runtime }) => {
         <Title style={StyleSheet.Title} numberOfLines={1}>
           {title}
         </Title>
-
         <SubInfo style={StyleSheet.Subtitle}>
           <Title>{release.substring(0, 4)} </Title>
           <Title>{" 19+ "}</Title>
           <Title>{runtime}min</Title>
-          {/* <Vote vote={vote} /> */}
         </SubInfo>
-
-        <Overview style={StyleSheet.Subtitle} numberOfLines={more ? 16 : 7}>
+        <Overview style={StyleSheet.Subtitle} numberOfLines={more ? 15 : 6}>
           {overview}
         </Overview>
-
         <MoreContainer>
-          <LinearGradient
-            start={{ x: 0, y: 0 }}
-            end={{ x: 1, y: 0 }}
-            locations={[0, 0.1]}
-            colors={["rgba(190, 184, 184, 0)", "rgba(190, 184, 184, 1)"]}
+          <More
+            style={StyleSheet.Subtitle}
+            onPress={() => setMore((prev) => !prev)}
           >
-            <More
-              style={StyleSheet.Subtitle}
-              onPress={() => setMore((prev) => !prev)}
-            >
-              ...More
-            </More>
-          </LinearGradient>
+            More
+          </More>
         </MoreContainer>
       </InfoContainer>
     </Container>
   );
+};
+
+Info.propTypes = {
+  title: PropTypes.string.isRequired,
+  overview: PropTypes.string,
+  release: PropTypes.string,
+  runtime: PropTypes.number,
 };
 
 export default Info;

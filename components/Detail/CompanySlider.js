@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components/native";
 import StyleSheet from "../StyleSheet";
+import PropTypes from "prop-types";
 import { Dimensions } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import Swiper from "react-native-web-swiper";
@@ -48,5 +49,7 @@ const CompanySlider = ({ companies }) => {
     </Container>
   );
 };
+
+CompanySlider.propTypes = { companies: PropTypes.array.isRequired };
 
 export default CompanySlider;

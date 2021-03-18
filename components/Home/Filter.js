@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components/native";
 import StyleSheet from "../StyleSheet";
+import PropTypes from "prop-types";
 
 const Container = styled.ScrollView`
   height: 42px;
@@ -45,6 +46,12 @@ const Filter = ({ selectedArray, setSelectedArray, genres }) => {
       ))}
     </Container>
   );
+};
+
+Filter.propTypes = {
+  genre: PropTypes.string,
+  selectedArray: PropTypes.array,
+  setSelectedArray: PropTypes.func,
 };
 
 export default Filter;
