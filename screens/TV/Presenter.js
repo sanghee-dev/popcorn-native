@@ -1,11 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import styled from "styled-components/native";
 import StyleSheet from "../../components/StyleSheet";
 import { ActivityIndicator, RefreshControl } from "react-native";
 import Slider from "../../components/Slider";
 import SwiperSlider from "../../components/SwiperSlider";
+import TopButton from "../../components/TopButton";
 
-const Container = styled.ScrollView``;
+const Container = styled.View``;
+const ScrollView = styled.ScrollView``;
 
 export default ({
   loading,
@@ -15,6 +17,7 @@ export default ({
   topRated,
   refreshFn,
 }) => {
+  const scrollRef = useRef();
   const [refreshing, setRefreshing] = useState(false);
   const onRefresh = async () => {
     setRefreshing(true);
@@ -23,7 +26,8 @@ export default ({
   };
 
   return (
-    <Container
+    <ScrollView
+      ref={scrollRef}
       style={StyleSheet.Container}
       contentContainerStyle={{ flexGrow: 1, justifyContent: "center" }}
       refreshControl={
@@ -38,13 +42,14 @@ export default ({
       {loading ? (
         <ActivityIndicator color="rgb(0, 255, 84)" />
       ) : (
-        <>
+        <Container>
           <SwiperSlider movieList={airingToday} isTV={true} />
           <Slider movieList={onTheAir} title="On The Air Shows" isTV={true} />
           <Slider movieList={popular} title="Popular Shows" isTV={true} />
           <Slider movieList={topRated} title="Top Rated Shows" isTV={true} />
-        </>
+          <TopButton scrollRef={scrollRef} />
+        </Container>
       )}
-    </Container>
+    </ScrollView>
   );
 };

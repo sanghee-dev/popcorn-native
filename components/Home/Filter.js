@@ -3,14 +3,16 @@ import styled from "styled-components/native";
 import PropTypes from "prop-types";
 
 const Container = styled.ScrollView`
-  height: 42px;
+  height: 44px;
   flex-direction: row;
   margin-bottom: 32px;
 `;
 const Button = styled.TouchableOpacity`
   height: 28px;
   border-radius: 20px;
-  padding: 7px 10px 0px;
+  padding: 7px 10px;
+  justify-content: center;
+  align-items: center;
   margin-right: 6px;
 `;
 const Title = styled.Text`

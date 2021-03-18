@@ -1,11 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import styled from "styled-components/native";
 import StyleSheet from "../../components/StyleSheet";
 import { ActivityIndicator, RefreshControl } from "react-native";
 import Input from "../../components/Search/Input";
 import Slider from "../../components/Slider";
+import TopButton from "../../components/TopButton";
 
-const Container = styled.ScrollView``;
+const Container = styled.View``;
+const ScrollView = styled.ScrollView``;
 const ResultContainer = styled.View``;
 
 const Presenter = ({
@@ -17,6 +19,7 @@ const Presenter = ({
   tvResult,
   refreshFn,
 }) => {
+  const scrollRef = useRef();
   const [refreshing, setRefreshing] = useState(false);
   const onRefresh = async () => {
     setRefreshing(true);
@@ -25,7 +28,8 @@ const Presenter = ({
   };
 
   return (
-    <Container
+    <ScrollView
+      ref={scrollRef}
       style={StyleSheet.Container}
       refreshControl={
         <RefreshControl
@@ -44,7 +48,7 @@ const Presenter = ({
         {loading ? (
           <ActivityIndicator color="rgb(0, 255, 84)" />
         ) : (
-          <>
+          <Container>
             <Input
               keyword={keyword}
               onChangeText={onChangeText}
@@ -56,10 +60,11 @@ const Presenter = ({
             {tvResult?.length > 0 && (
               <Slider movieList={tvResult} title="TV Shows Results" />
             )}
-          </>
+            {movieResult?.length > 0 && <TopButton scrollRef={scrollRef} />}
+          </Container>
         )}
       </ResultContainer>
-    </Container>
+    </ScrollView>
   );
 };
 

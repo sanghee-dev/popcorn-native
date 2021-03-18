@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import styled from "styled-components/native";
 import StyleSheet from "../../components/StyleSheet";
 import { ActivityIndicator, RefreshControl } from "react-native";
 import Slider from "../../components/Slider";
 import SwiperSlider from "../../components/SwiperSlider";
+import TopButton from "../../components/TopButton";
 
 const Container = styled.ScrollView``;
 
@@ -15,6 +16,7 @@ export default ({
   topRated,
   refreshFn,
 }) => {
+  const scrollRef = useRef();
   const [refreshing, setRefreshing] = useState(false);
   const onRefresh = async () => {
     setRefreshing(true);
@@ -24,6 +26,7 @@ export default ({
 
   return (
     <Container
+      ref={scrollRef}
       style={StyleSheet.Container}
       contentContainerStyle={{ flexGrow: 1, justifyContent: "center" }}
       refreshControl={
@@ -43,6 +46,7 @@ export default ({
           <Slider movieList={upcoming} title="Upcoming Movies" />
           <Slider movieList={popular} title="Popular Movies" />
           <Slider movieList={topRated} title="Top Rated Movies" />
+          <TopButton scrollRef={scrollRef} />
         </>
       )}
     </Container>

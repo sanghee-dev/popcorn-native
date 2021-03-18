@@ -1,13 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import styled from "styled-components/native";
 import StyleSheet from "../../components/StyleSheet";
 import { ActivityIndicator, RefreshControl } from "react-native";
 import Slider from "../../components/Slider";
 import Filter from "../../components/Home/Filter";
+import TopButton from "../../components/TopButton";
 
 const Container = styled.View``;
 const ScrollView = styled.ScrollView``;
-const Title = styled.Text``;
 
 export default ({
   loading,
@@ -20,6 +20,7 @@ export default ({
   setSelectedArray,
   genres,
 }) => {
+  const scrollRef = useRef();
   const [refreshing, setRefreshing] = useState(false);
   const onRefresh = async () => {
     setRefreshing(true);
@@ -29,6 +30,7 @@ export default ({
 
   return (
     <ScrollView
+      ref={scrollRef}
       style={StyleSheet.Container}
       refreshControl={
         <RefreshControl
@@ -59,6 +61,7 @@ export default ({
               <Slider movieList={fourthGenre} title={selectedArray[3]} />
             </ScrollView>
           </ScrollView>
+          <TopButton scrollRef={scrollRef} />
         </Container>
       )}
     </ScrollView>
