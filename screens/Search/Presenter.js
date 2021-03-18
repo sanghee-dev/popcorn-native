@@ -1,11 +1,10 @@
 import React, { useState } from "react";
 import styled from "styled-components/native";
 import StyleSheet from "../../components/StyleSheet";
-import { Dimensions, ActivityIndicator, RefreshControl } from "react-native";
+import { ActivityIndicator, RefreshControl } from "react-native";
 import Input from "../../components/Search/Input";
 import Slider from "../../components/Slider";
 
-const { width: WIDTH, height: HEIGHT } = Dimensions.get("window");
 const Container = styled.ScrollView``;
 const ResultContainer = styled.View``;
 

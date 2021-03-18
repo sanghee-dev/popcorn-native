@@ -5,10 +5,7 @@ import { ActivityIndicator, RefreshControl, Dimensions } from "react-native";
 import Card from "../../components/Like/Card";
 
 const { width: WIDTH, height: HEIGHT } = Dimensions.get("window");
-const Container = styled.View`
-  align-items: center;
-`;
-const Title = styled.Text``;
+const Container = styled.ScrollView``;
 const CardContainer = styled.View`
   width: ${WIDTH - 32}px;
   height: ${HEIGHT - 130}px;

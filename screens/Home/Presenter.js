@@ -28,7 +28,7 @@ export default ({
   };
 
   return (
-    <Container
+    <ScrollView
       style={StyleSheet.Container}
       refreshControl={
         <RefreshControl
@@ -45,20 +45,22 @@ export default ({
       {loading ? (
         <ActivityIndicator color="rgb(0, 255, 84)" />
       ) : (
-        <ScrollView showsHorizontalScrollIndicator={false}>
-          <Filter
-            selectedArray={selectedArray}
-            setSelectedArray={setSelectedArray}
-            genres={genres}
-          />
-          <ScrollView>
-            <Slider movieList={firstGenre} title={selectedArray[0]} />
-            <Slider movieList={secondGenre} title={selectedArray[1]} />
-            <Slider movieList={thirdGenre} title={selectedArray[2]} />
-            <Slider movieList={fourthGenre} title={selectedArray[3]} />
+        <Container>
+          <ScrollView showsHorizontalScrollIndicator={false}>
+            <Filter
+              selectedArray={selectedArray}
+              setSelectedArray={setSelectedArray}
+              genres={genres}
+            />
+            <ScrollView>
+              <Slider movieList={firstGenre} title={selectedArray[0]} />
+              <Slider movieList={secondGenre} title={selectedArray[1]} />
+              <Slider movieList={thirdGenre} title={selectedArray[2]} />
+              <Slider movieList={fourthGenre} title={selectedArray[3]} />
+            </ScrollView>
           </ScrollView>
-        </ScrollView>
+        </Container>
       )}
-    </Container>
+    </ScrollView>
   );
 };
