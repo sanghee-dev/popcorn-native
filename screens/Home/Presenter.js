@@ -30,7 +30,6 @@ export default ({
   return (
     <Container
       style={StyleSheet.Container}
-      contentContainerStyle={{ flexGrow: 1, justifyContent: "center" }}
       refreshControl={
         <RefreshControl
           onRefresh={onRefresh}
@@ -46,7 +45,7 @@ export default ({
       {loading ? (
         <ActivityIndicator color="rgb(0, 255, 84)" />
       ) : (
-        <ScrollView>
+        <ScrollView showsHorizontalScrollIndicator={false}>
           <Filter
             selectedArray={selectedArray}
             setSelectedArray={setSelectedArray}

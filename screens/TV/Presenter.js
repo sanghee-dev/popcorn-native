@@ -33,6 +33,7 @@ export default ({
           tintColor="rgb(0, 255, 84)"
         />
       }
+      showsHorizontalScrollIndicator={false}
     >
       {loading ? (
         <ActivityIndicator color="rgb(0, 255, 84)" />

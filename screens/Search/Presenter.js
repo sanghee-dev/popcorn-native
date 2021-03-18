@@ -39,6 +39,7 @@ const Presenter = ({
         flex: loading ? 1 : 0,
         justifyContent: loading ? "center" : "flex-start",
       }}
+      showsHorizontalScrollIndicator={false}
     >
       <ResultContainer>
         {loading ? (
