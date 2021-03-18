@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import styled from "styled-components/native";
-import StyleSheet from "../../components/StyleSheet";
 import { Animated, PanResponder, Dimensions } from "react-native";
 import PropTypes from "prop-types";
 import Poster from "../Poster";
@@ -11,13 +10,6 @@ const Container = styled.View`
   width: 100%;
   height: 100%;
   align-items: center;
-`;
-const Title = styled.Text``;
-const CardView = styled.View`
-  width: 100%;
-  height: 100%;
-  border-radius: 8px;
-  overflow: hidden;
 `;
 
 const CardStyles = {

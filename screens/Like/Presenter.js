@@ -5,7 +5,7 @@ import { ActivityIndicator, RefreshControl, Dimensions } from "react-native";
 import Card from "../../components/Like/Card";
 
 const { width: WIDTH, height: HEIGHT } = Dimensions.get("window");
-const Container = styled.ScrollView``;
+const Container = styled.View``;
 const CardContainer = styled.View`
   width: ${WIDTH - 32}px;
   height: ${HEIGHT - 130}px;
@@ -38,7 +38,7 @@ export default ({ loading, movieTrend, tvTrend, refreshFn }) => {
       {loading ? (
         <ActivityIndicator color="rgb(0, 255, 84)" />
       ) : (
-        <>
+        <Container>
           <CardContainer>
             <Card
               mediaList={movieTrend
@@ -46,7 +46,7 @@ export default ({ loading, movieTrend, tvTrend, refreshFn }) => {
                 .flat()}
             />
           </CardContainer>
-        </>
+        </Container>
       )}
     </Container>
   );
