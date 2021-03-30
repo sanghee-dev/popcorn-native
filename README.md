@@ -1,6 +1,6 @@
 # popcorn-native
 
-# Introduction
+### Introduction
 Discover movies and series in popcorn!
 This app is made with React Native.
 
