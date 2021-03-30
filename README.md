@@ -1,4 +1,4 @@
-# popcorn-native
+# Popcorn App
 
 ### Introduction
 Discover movies and series in popcorn!
