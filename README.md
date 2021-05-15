@@ -35,7 +35,7 @@
 
 - https://play.google.com/store/apps/details?id=co.leeesangheee.popcorn
 
-<img src="https://user-images.githubusercontent.com/61302874/113009094-9bdb9f80-91b2-11eb-8003-445f5f9176d6.png" width="800" />
+<img alt="googlePlay" src="https://user-images.githubusercontent.com/61302874/113009094-9bdb9f80-91b2-11eb-8003-445f5f9176d6.png" width="800" />
 
 <br/>
 
@@ -43,6 +43,6 @@
 
 - https://expo.io/@sanghee/projects/popcorn-native
 
-<img src="https://user-images.githubusercontent.com/61302874/118371135-1c7d2080-b5e6-11eb-859d-40a9510f8385.png" width="800" />
+<img alt="expo" src="https://user-images.githubusercontent.com/61302874/118371563-15571200-b5e8-11eb-856c-8cec4fdc613d.png" width="800" />
 
-<img src="https://user-images.githubusercontent.com/61302874/118370953-1a669200-b5e5-11eb-97f0-c772b3d69fb4.png" width="800"/>
+<img alt="mockup" src="https://user-images.githubusercontent.com/61302874/118370953-1a669200-b5e5-11eb-97f0-c772b3d69fb4.png" width="800"/>
