@@ -9,8 +9,8 @@
 
 ### Home
 
-- You can watch the movies you want by setting genre filter.
-- You can press the Like button.
+- Watch the movies you want by setting genre filter.
+- Press the Like button.
 - If there is no poster, an alternative image will replace it.
 
 ### Movie
@@ -23,11 +23,11 @@
 
 ### Search
 
-- You can search movies and TV shows. If there is no result, it shows a message.
+- Search movies and TV shows. If there is no result, it shows a message.
 
 ### Like
 
-- You can see posters while swiping them in card format.
+- See posters while swiping them in card format.
 
 <br/>
 
