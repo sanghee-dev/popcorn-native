@@ -10,7 +10,7 @@
 ### Home
 
 - Watch the movies you want by setting genre filter.
-- Press the Like button.
+- You can press like button.
 - If there is no poster, an alternative image will replace it.
 
 ### Movie
